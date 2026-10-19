@@ -1,0 +1,6 @@
+[
+ {"name": "Kalaya", "city": "Philadelphia", "open": true, "james_beard": ["2026 Outstanding Restaurant (winner)"], "sources": ["https://www.finedininglovers.com/explore/articles/2026-james-beard-award-winners"]},
+ {"name": "Royal Sushi & Izakaya", "match_names": ["ROYAL SUSHI AND IZAKAYA", "ROYAL IZAKAYA"], "city": "Philadelphia", "open": true, "chef": "Jesse Ito", "james_beard": ["2026 Best Chef: Mid-Atlantic, Jesse Ito (winner)"], "sources": ["https://www.finedininglovers.com/explore/articles/2026-james-beard-award-winners"]},
+ {"name": "Oyster House", "city": "Philadelphia", "open": true, "founded": 1976, "founded_note": "The Mink family's seafood house since 1947; David Mink opened this Sansom Street location in 1976", "james_beard": ["2026 America's Classic"], "sources": ["https://web.jamesbeard.org/stories/james-beard-americas-classics-award-winners-2026", "https://phillygrub.blog/2026/02/25/oyster-house-james-beard-classics-award/"]},
+ {"name": "Mawn", "city": "Philadelphia", "open": true, "chef": "Phila Lorn", "james_beard": ["2025 Emerging Chef, Phila Lorn (winner)"], "sources": ["https://www.phillymag.com/restaurants/2025/06/17/phila-lorn-wins-2025-james-beard-award/"]}
+]

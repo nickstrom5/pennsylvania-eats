@@ -1,0 +1,153 @@
+{
+ "guide": "MICHELIN Guide Northeast Cities (Philadelphia's first selection, revealed 2025-11-18)",
+ "note": "The guide's Pennsylvania page (guide.michelin.com) answers our checks with a bot challenge, so it is never fetched. Distinctions from MICHELIN's own press release (michelinmedia.com, stars and Green Star) and a 2025-11-26 report of the full list; the Sept 27, 2026 Pennsylvania page list is from the state prompt. Recommended (no distinction) places are in LEADS.md until each is re-checked open. Refresh after the 2026 reveal on 2026-12-14.",
+ "restaurants": [
+  {
+   "name": "Friday Saturday Sunday",
+   "city": "Philadelphia",
+   "distinction": "1 Star",
+   "sources": [
+    "https://michelinmedia.com/pages/blog/detail/article/c0/a1442/"
+   ]
+  },
+  {
+   "name": "Her Place Supper Club",
+   "city": "Philadelphia",
+   "distinction": "1 Star",
+   "sources": [
+    "https://michelinmedia.com/pages/blog/detail/article/c0/a1442/"
+   ],
+   "address": "1740 Sansom St",
+   "match_names": [
+    "HER PLACE"
+   ],
+   "address_from": "Overture listing (matching only)"
+  },
+  {
+   "name": "Provenance",
+   "city": "Philadelphia",
+   "distinction": "1 Star",
+   "sources": [
+    "https://michelinmedia.com/pages/blog/detail/article/c0/a1442/"
+   ]
+  },
+  {
+   "name": "Angelo's",
+   "match_names": [
+    "ANGELOS PIZZERIA"
+   ],
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ],
+   "address": "736 S 9th St",
+   "address_from": "Overture listing (matching only)"
+  },
+  {
+   "name": "Dalessandro's",
+   "match_names": [
+    "DALESSANDROS STEAKS"
+   ],
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "Del Rossi's",
+   "match_names": [
+    "DEL ROSSIS CHEESESTEAK"
+   ],
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "Dizengoff",
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "El Chingon",
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ],
+   "address": "1524 S 10th St",
+   "match_names": [
+    "EL CHINGON PHILLY"
+   ],
+   "address_from": "Overture listing (matching only)"
+  },
+  {
+   "name": "Famous 4th Street Delicatessen",
+   "match_names": [
+    "FAMOUS 4TH STREET DELI",
+    "4TH STREET DELI"
+   ],
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "Fiorella",
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ],
+   "address": "817 Christian St",
+   "match_names": [
+    "FIORELLA PASTA"
+   ],
+   "address_from": "Overture listing (matching only)"
+  },
+  {
+   "name": "Pizzeria Beddia",
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "Royal Sushi & Izakaya",
+   "match_names": [
+    "ROYAL SUSHI AND IZAKAYA",
+    "ROYAL IZAKAYA"
+   ],
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "Sally",
+   "city": "Philadelphia",
+   "distinction": "Bib Gourmand",
+   "sources": [
+    "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
+   ]
+  },
+  {
+   "name": "Pietramala",
+   "city": "Philadelphia",
+   "distinction": "Recommended",
+   "green_star": true,
+   "sources": [
+    "https://michelinmedia.com/pages/blog/detail/article/c0/a1442/"
+   ]
+  }
+ ]
+}

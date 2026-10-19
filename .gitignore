@@ -1,0 +1,11 @@
+DerivedData*/
+.venv/
+data/*
+!data/research/
+data/research/source_hosts.json
+site/*.json
+build/
+*.xcodeproj/
+__pycache__/
+.DS_Store
+LOCAL.md
