@@ -40,12 +40,19 @@ import requests
 
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = f"{ROOT}/data/pa/website_check.json"
+
+
+def save(results):
+    """Atomic: write a temp file and rename it, so a stopped run can never leave a half-written check file (CA lost 24k checks)."""
+    tmp = f"{OUT}.{os.getpid()}.tmp"
+    json.dump(results, open(tmp, "w"), indent=0)
+    os.replace(tmp, OUT)
 RULES = 2            # bump when the rules change: every cached verdict from older rules is fetched again
 RECHECK_DAYS = 14
 TODAY = datetime.date.today().isoformat()
 UA = "PennsylvaniaEatsLinkCheck/1.0 (+https://pennsylvania.eatsranked.com/; nick@eatsranked.com)"
 GENERIC = set("""the and of a an at on in restaurant restaurants bar bars grill grille cafe caffe coffee pizza pizzeria pub tavern house
-supper club inn lounge kitchen bistro eatery diner bakery deli market express food foods co company inc llc ltd corp ny nyc new york brooklyn queens bronx manhattan
+supper club inn lounge kitchen bistro eatery diner bakery deli market express food foods co company inc llc ltd corp pa penn pennsylvania philly philadelphia pittsburgh pgh
 family original new old north south east west st saint mt sports place spot shop shoppe taproom brewing brewery
 tap taps bbq barbecue burger burgers chicken subs sub sandwich sandwiches tacos taco mexican chinese thai sushi asian italian
 american cuisine catering events""".split())
@@ -262,7 +269,7 @@ def main():
             done += 1
             if done % 500 == 0:
                 print(f"  {done}/{len(todo)}", flush=True)
-                json.dump(results, open(OUT, "w"))
+                save(results)
 
     with ThreadPoolExecutor(max_workers=24) as ex:
         list(ex.map(run, todo))
@@ -276,7 +283,7 @@ def main():
             elif not results[u]["ok"] and results[u]["why"] == "page doesn't mention the place" and \
                     regdom(urllib.parse.urlparse(results[u]["final"]).netloc) == dom:
                 results[u] = {**results[u], "ok": True, "why": "brand's own site (store page drawn by scripts)"}
-    json.dump(results, open(OUT, "w"), indent=0)
+    save(results)
     c = collections.Counter(v["why"] if not v["ok"] else "ok" for v in results.values())
     print("results:", c.most_common())
 

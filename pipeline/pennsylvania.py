@@ -910,6 +910,7 @@ if APP:   # in the app the guides list hand-checked places only; name tags still
 for col in ("jbf", "michelin", "founded", "founded_note", "cur_tags", "dishes", "season", "branch", "rnote", "rsite", "chef", "rsrc", "evidence"):
     o[col] = None
 o["seasonal"] = False
+o["green"] = False
 match_curated = curated_matcher(o)
 o["hc"] = False
 matched_cur, unmatched = 0, []
@@ -933,6 +934,8 @@ for c in CUR:
             o.at[i, col] = v
     if c.get("seasonal"):
         o.at[i, "seasonal"] = True
+    if c.get("green"):
+        o.at[i, "green"] = True
 print(f"research entries matched: {matched_cur}/{len(CUR)}; unmatched ({len(unmatched)}): {unmatched[:25]}", flush=True)
 closed_v = []
 for f in sorted(glob.glob(f"{DATA}/research/closed*.json")):
@@ -1111,7 +1114,7 @@ INHERIT = ["dishes", "season", "branch", "rnote", "rsite", "rsrc", "web", "phone
 for keep_i, lose in merged:
     if o.at[keep_i, "cuisine"] == "American & Other" and o.at[lose, "cuisine"] != "American & Other":
         o.at[keep_i, "cuisine"] = o.at[lose, "cuisine"]
-    for col in [c for c in o.columns if c.startswith("t_")] + ["hc", "honored", "seasonal"]:
+    for col in [c for c in o.columns if c.startswith("t_")] + ["hc", "honored", "seasonal", "green"]:
         if bool(o.at[lose, col]) and not bool(o.at[keep_i, col]):
             o.at[keep_i, col] = o.at[lose, col]
     for col in INHERIT:
@@ -1196,6 +1199,7 @@ if APP:
         if isinstance(x.ac_placard, str):
             p["ac"] = {"p": x.ac_placard, "d": sval(x.ac_last_insp)}
         if isinstance(x.phl_lic, str): p["phl"] = 1
+        if x.green: p["gs"] = 1
         if x.counter: p["cc"] = 1
         if x.members: p["mc"] = 1
         if x.hc:
@@ -1296,6 +1300,7 @@ for r_ in REGIONS:
                                ("lic", x.plcb_lic), ("liq_since", x.liq_since), ("phl_lic", x.phl_lic), ("phl_since", x.phl_since),
                                ("muni", x.muni if x.muni != x.city else None))
              if isinstance(v, (str, int)) and v != ""}
+        if x.green: e["green"] = True
         if e:
             extra[i] = e
     for _k, _v in list(C.items()) + list(SP.items()):
