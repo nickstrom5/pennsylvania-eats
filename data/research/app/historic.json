@@ -1,0 +1,28 @@
+[
+ {
+  "name": "McGillin's Olde Ale House",
+  "address": "1310 Drury St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Philadelphia",
+  "zip": "19107",
+  "kinds": [
+   "oldest"
+  ],
+  "dishes": [],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": "Says its taps have flowed since 1860, making it the city's oldest continuously operating tavern (its own claim); its history doesn't say it has always been on Drury Street",
+  "branch_of": null,
+  "note": "Center City tavern opened as the Bell in Hand by Catherine and William McGillin.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-10",
+  "sources": [
+   "https://mcgillins.com/history/",
+   "https://www.phillyvoice.com/mcgillans-olde-ale-house-gift-shop-center-city-philly-bars/"
+  ]
+ }
+]

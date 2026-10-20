@@ -53,18 +53,23 @@
    "distinction": "Bib Gourmand",
    "sources": [
     "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
-   ]
+   ],
+   "address": "600 Wendover St",
+   "address_from": "Visit Philly cheesesteak guide (2026-03-18)"
   },
   {
    "name": "Del Rossi's",
    "match_names": [
-    "DEL ROSSIS CHEESESTEAK"
+    "DEL ROSSIS CHEESESTEAK",
+    "DEL ROSSIS CHEESESTEAK AND PIZZA"
    ],
    "city": "Philadelphia",
    "distinction": "Bib Gourmand",
    "sources": [
     "https://eglobaltravelmedia.com.au/2025/11/26/five-city-culinary-stars-shine-bright-at-phillys-michelin-gala"
-   ]
+   ],
+   "address": "538 N 4th St",
+   "address_from": "Visit Philly cheesesteak guide (2026-03-18)"
   },
   {
    "name": "Dizengoff",

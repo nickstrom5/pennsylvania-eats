@@ -1,0 +1,57 @@
+[
+ {
+  "name": "Center City Pretzel Co.",
+  "address": "816 Washington Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Italian Market",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "pretzel"
+  ],
+  "dishes": [
+   "Philly soft pretzels"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": "A family business started in 1981, per Spotlight PA (not stated to be at this address)",
+  "branch_of": null,
+  "note": "Family pretzel bakery in South Philadelphia's Italian Market area.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-04",
+  "sources": [
+   "https://www.spotlightpa.org/news/2026/04/pretzels-history-germany-lititz-philadelphia-lancaster-county-immigration-pennsylvania-local/"
+  ]
+ },
+ {
+  "name": "Miller's Twist",
+  "address": "51 N 12th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Reading Terminal Market",
+  "county": "Philadelphia",
+  "zip": "19107",
+  "kinds": [
+   "pretzel"
+  ],
+  "dishes": [
+   "hand-rolled soft pretzels",
+   "cheesesteak pretzel roll-up"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Reading Terminal Market stand rolling Amish-style soft pretzels by hand.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/best-things-to-eat-at-reading-terminal-market/"
+  ]
+ }
+]

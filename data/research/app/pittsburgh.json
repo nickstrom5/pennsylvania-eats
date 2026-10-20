@@ -1,0 +1,85 @@
+[
+ {
+  "name": "Apteka",
+  "address": "4606 Penn Ave",
+  "city": "Pittsburgh",
+  "municipality": null,
+  "neighborhood": "Bloomfield",
+  "county": "Allegheny",
+  "zip": "15224",
+  "kinds": [
+   "pierogi"
+  ],
+  "dishes": [
+   "pierogi"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Vegan Eastern European restaurant in Bloomfield; pierogi on its seasonal menu.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-05",
+  "sources": [
+   "https://www.pittsburghmagazine.com/the-25-best-restaurants-in-pittsburgh-for-2026/"
+  ]
+ },
+ {
+  "name": "Pierogies Plus",
+  "address": "342 Island Ave",
+  "city": "McKees Rocks",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Allegheny",
+  "zip": "15136",
+  "kinds": [
+   "pierogi"
+  ],
+  "dishes": [
+   "pierogies"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Pierogi shop in a converted gas station in McKees Rocks; its pierogies also supply area bars.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-06",
+  "sources": [
+   "https://pittsburgh.tablemagazine.com/blog/best-pierogis-in-pittsburgh/",
+   "https://www.pittsburghmagazine.com/2026-best-of-the-burgh-winners-food-restaurants/"
+  ]
+ },
+ {
+  "name": "Primanti Bros.",
+  "address": "46 18th St",
+  "city": "Pittsburgh",
+  "municipality": null,
+  "neighborhood": "Strip District",
+  "county": "Allegheny",
+  "zip": "15222",
+  "kinds": [
+   "pittsburgh sandwich"
+  ],
+  "dishes": [
+   "sandwich with fries and coleslaw inside"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": "Joe Primanti's sandwich cart in the Strip became a storefront in 1933, per the company",
+  "branch_of": null,
+  "note": "The original Primanti Bros. in the Strip District: grilled meat, provolone, coleslaw, fries and tomato on Italian bread.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-04",
+  "sources": [
+   "https://www.visitpittsburgh.com/blog/26-things-to-do-while-in-town-for-the-2026-nfl-draft/",
+   "https://primantibros.com/our-story"
+  ]
+ }
+]

@@ -1,0 +1,195 @@
+[
+ {
+  "name": "Hershey Farm Resort - The Grand Smorgasbord",
+  "address": "240 Hartman Bridge Rd",
+  "city": "Strasburg",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Lancaster",
+  "zip": "17579",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "smorgasbord"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Smorgasbord at Hershey Farm Resort; Pennsylvania Dutch family-style meals for groups.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-01",
+  "sources": [
+   "https://www.discoverlancaster.com/blog/all-you-can-eat-buffets-in-lancaster-pa/"
+  ]
+ },
+ {
+  "name": "Bird-in-Hand Family Restaurant & Smorgasbord",
+  "address": "2760 Old Philadelphia Pike",
+  "city": "Bird-in-Hand",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Lancaster",
+  "zip": "17505",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "smorgasbord"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Amish-country smorgasbord with breakfast, lunch and dinner.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-01",
+  "sources": [
+   "https://www.discoverlancaster.com/blog/all-you-can-eat-buffets-in-lancaster-pa/"
+  ]
+ },
+ {
+  "name": "Dienner's Country Restaurant",
+  "address": "2855 Lincoln Hwy E",
+  "city": "Ronks",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Lancaster",
+  "zip": "17572",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "smorgasbord"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Lancaster County country restaurant with buffets.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-01",
+  "sources": [
+   "https://www.discoverlancaster.com/blog/all-you-can-eat-buffets-in-lancaster-pa/"
+  ]
+ },
+ {
+  "name": "Yoder's Restaurant & Buffet",
+  "address": "14 S Tower Rd",
+  "city": "New Holland",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Lancaster",
+  "zip": "17557",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "smorgasbord"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Buffet-style Pennsylvania Dutch restaurant in New Holland.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-01",
+  "sources": [
+   "https://www.discoverlancaster.com/blog/all-you-can-eat-buffets-in-lancaster-pa/"
+  ]
+ },
+ {
+  "name": "Shady Maple Smorgasbord",
+  "address": "129 Toddy Dr",
+  "city": "East Earl",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Lancaster",
+  "zip": "17519",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "smorgasbord"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Smorgasbord serving breakfast, lunch and dinner in eastern Lancaster County.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-01",
+  "sources": [
+   "https://www.discoverlancaster.com/blog/all-you-can-eat-buffets-in-lancaster-pa/"
+  ]
+ },
+ {
+  "name": "Miller's Smorgasbord",
+  "address": "2811 Lincoln Hwy E",
+  "city": "Ronks",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Lancaster",
+  "zip": "17572",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "chicken pot pie",
+   "shoofly pie",
+   "chicken and waffles"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": "Serving since 1929, per VisitPA (not stated to be at this address)",
+  "branch_of": null,
+  "note": "Smorgasbord of Pennsylvania Dutch comfort food at The Shoppes at Miller's.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-02",
+  "sources": [
+   "https://www.visitpa.com/blog/post/a-taste-of-tradition-where-to-eat-shop-and-stay-in-lancaster-county/",
+   "https://www.discoverlancaster.com/blog/all-you-can-eat-buffets-in-lancaster-pa/"
+  ]
+ },
+ {
+  "name": "Dutch Eating Place",
+  "address": "51 N 12th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Reading Terminal Market",
+  "county": "Philadelphia",
+  "zip": "19107",
+  "kinds": [
+   "pa dutch"
+  ],
+  "dishes": [
+   "apple dumplings",
+   "apple cinnamon French toast"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Reading Terminal Market counter run by Amish and Mennonite families.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/best-things-to-eat-at-reading-terminal-market/"
+  ]
+ }
+]

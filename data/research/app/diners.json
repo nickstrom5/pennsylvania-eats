@@ -1,0 +1,84 @@
+[
+ {
+  "name": "Bob's Diner",
+  "address": "6053 Ridge Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Roxborough",
+  "county": "Philadelphia",
+  "zip": "19128",
+  "kinds": [
+   "diner"
+  ],
+  "dishes": [
+   "chili",
+   "creamed chipped beef on a soft pretzel"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Stainless-steel Roxborough diner with a lunch counter and booths.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026",
+  "sources": [
+   "https://www.phillymag.com/best-of-philly/food-drink/"
+  ]
+ },
+ {
+  "name": "The Village Diner",
+  "address": null,
+  "city": "Milford",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Pike",
+  "zip": null,
+  "kinds": [
+   "diner"
+  ],
+  "dishes": [
+   "all-day breakfast"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": "First built in 1956, per VisitPA",
+  "branch_of": null,
+  "note": "Diner in Milford along the Delaware River; the building dates to 1956.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitpa.com/blog/post/retro-experiences-pa/"
+  ]
+ },
+ {
+  "name": "Jolly Trolley",
+  "address": null,
+  "city": "Dushore",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Sullivan",
+  "zip": null,
+  "kinds": [
+   "diner"
+  ],
+  "dishes": [
+   "soda fountain"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "1950s-style luncheonette and variety store with a soda fountain.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitpa.com/blog/post/retro-experiences-pa/"
+  ]
+ }
+]

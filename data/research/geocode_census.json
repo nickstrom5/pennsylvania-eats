@@ -1,0 +1,35 @@
+{
+ "1136 Arch St, Philadelphia, PA 19107": {
+  "lat": 39.953769,
+  "lon": -75.158473,
+  "matched": "1136 ARCH ST, PHILADELPHIA, PA, 19107",
+  "zip": "19107"
+ },
+ "14 S Tower Rd, New Holland, PA 17557": {
+  "lat": 40.110498,
+  "lon": -76.066661,
+  "matched": "14 S TOWER RD, NEW HOLLAND, PA, 17557",
+  "zip": "17557"
+ },
+ "1517 N 4th St, Philadelphia, PA 19122": {
+  "lat": 39.973935,
+  "lon": -75.142184,
+  "matched": "1517 N 4TH ST, PHILADELPHIA, PA, 19122",
+  "zip": "19122"
+ },
+ "51 N 12th St, Philadelphia, PA 19107": {
+  "lat": 39.952424,
+  "lon": -75.159698,
+  "matched": "51 N 12TH ST, PHILADELPHIA, PA, 19107",
+  "zip": "19107"
+ },
+ "5100 Umbria St, Philadelphia, PA 19128": {
+  "lat": 40.037123,
+  "lon": -75.238017,
+  "matched": "5100 UMBRIA ST, PHILADELPHIA, PA, 19128",
+  "zip": "19128"
+ },
+ "_misses": [
+  "240 Hartman Bridge Rd, Strasburg, PA 17579"
+ ]
+}

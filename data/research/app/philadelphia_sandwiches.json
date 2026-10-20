@@ -1,0 +1,1550 @@
+[
+ {
+  "name": "Angelo's Pizzeria",
+  "address": "736 S 9th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak",
+   "pizza steak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Cafe Carmela",
+  "address": "2859 Holme Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Northeast Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19152",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Del Rossi's Cheesesteak & Pizza",
+  "address": "538 N 4th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Northern Liberties",
+  "county": "Philadelphia",
+  "zip": "19123",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Delco Steaks",
+  "address": "2567 West Chester Pike",
+  "city": "Broomall",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Delaware",
+  "zip": "19008",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak",
+   "chicken cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Dolores' 2Street",
+  "address": "1841 S 2nd St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19148",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "pizza steak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Gouldsburger's",
+  "address": "100 N 18th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Center City",
+  "county": "Philadelphia",
+  "zip": "19103",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Jim's West",
+  "address": "431 N 62nd St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "West Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19151",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Joe's Steaks + Soda Shop",
+  "address": "1 W Girard Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Fishtown",
+  "county": "Philadelphia",
+  "zip": "19123",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Johnny's Pizza",
+  "address": "1025 W Lancaster Ave",
+  "city": "Bryn Mawr",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Montgomery",
+  "zip": "19010",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Nipotina",
+  "address": "2238 S 21st St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Paffuto",
+  "address": "1009 S 8th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak",
+   "tomato pie"
+  ],
+  "dishes": [
+   "cheesesteak",
+   "tomato pie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.inquirer.com/food/best-tomato-pie-philadelphia-20250902.html"
+  ]
+ },
+ {
+  "name": "Shay's Steaks",
+  "address": "200 N 16th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Center City",
+  "county": "Philadelphia",
+  "zip": "19102",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Steaks West Chester",
+  "address": "698 E Market St",
+  "city": "West Chester",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Chester",
+  "zip": "19382",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Steve's Prince of Steaks",
+  "address": "7200 Bustleton Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Northeast Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19149",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "The Rook on 4th",
+  "address": "1517 N 4th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Old Kensington",
+  "county": "Philadelphia",
+  "zip": "19122",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Uncle Gus' Steaks",
+  "address": "1136 Arch St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Center City",
+  "county": "Philadelphia",
+  "zip": "19107",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Verona Pizza",
+  "address": "1941 Norristown Rd",
+  "city": "Maple Glen",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Montgomery",
+  "zip": "19002",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Steak shop on the Inquirer's April 2025 list of the area's best cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2025-04",
+  "sources": [
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "John's Roast Pork",
+  "address": "14 E Snyder Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19148",
+  "kinds": [
+   "cheesesteak",
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork",
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "South Philadelphia sandwich stand known for roast pork and cheesesteaks.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/",
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Shank's Original",
+  "address": "901 S Christopher Columbus Blvd",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak",
+   "roast pork"
+  ],
+  "dishes": [
+   "Roast Pork Italiano",
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Sandwich counter at Pier 40 on the Delaware River waterfront.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/",
+   "https://www.inquirer.com/food/best-cheesesteaks-philadelphia.html"
+  ]
+ },
+ {
+  "name": "Cherry Street Tavern",
+  "address": "129 N 22nd St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Philadelphia",
+  "zip": "19103",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Dattilo's Delicatessen",
+  "address": "8000 Horrocks St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Rhawnhurst",
+  "county": "Philadelphia",
+  "zip": "19152",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "George's Sandwich Shop",
+  "address": "900 S 9th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Italian Market",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork",
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "High Street Philly",
+  "address": "308 Market St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Center City",
+  "county": "Philadelphia",
+  "zip": "19106",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Old Original Nick's Roast Beef",
+  "address": "2149 S 20th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "West Passyunk",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork",
+   "roast beef"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Porco's Porchetteria",
+  "address": "2204 Washington Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Philadelphia",
+  "zip": "19146",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "porchetta sandwich"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Tommy DiNic's",
+  "address": "51 N 12th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Reading Terminal Market",
+  "county": "Philadelphia",
+  "zip": "19107",
+  "kinds": [
+   "roast pork"
+  ],
+  "dishes": [
+   "roast pork"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's roast pork sandwiches (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Paesano's Philly Style",
+  "address": "943 S 9th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Italian Market",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "roast pork",
+   "hoagie"
+  ],
+  "dishes": [
+   "Arista roast pork",
+   "brisket hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Italian Market sandwich shop on Visit Philly's roast pork and hoagie guides.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/",
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Liberty Kitchen",
+  "address": "1400 N Front St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Fishtown",
+  "county": "Philadelphia",
+  "zip": "19122",
+  "kinds": [
+   "roast pork",
+   "hoagie",
+   "tomato pie"
+  ],
+  "dishes": [
+   "roast pork",
+   "Italian hoagie",
+   "tomato pie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "Fishtown sandwich shop and grocery on Visit Philly's roast pork and hoagie guides.",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/the-best-roast-pork-sandwiches-in-philadelphia/",
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/",
+   "https://www.inquirer.com/food/best-tomato-pie-philadelphia-20250902.html"
+  ]
+ },
+ {
+  "name": "Antonio's Deli",
+  "address": "1014 Federal St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "veggie hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Castellino's Italian Market",
+  "address": "1255 E Palmer St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Fishtown",
+  "county": "Philadelphia",
+  "zip": "19125",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Cosmi's Deli",
+  "address": "1501 S 8th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "hoagie",
+   "cheesesteak"
+  ],
+  "dishes": [
+   "hoagie",
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/",
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Farina Di Vita",
+  "address": "250 Catharine St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Queen Village",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie",
+   "chicken cutlet"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Fink's Hoagies",
+  "address": "4633 Princeton Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Tacony",
+  "county": "Philadelphia",
+  "zip": "19135",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Lil Nick's Deli",
+  "address": "1311 W Moyamensing Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19148",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Mi-Pals Deli",
+  "address": "2300 S 16th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Middle Child",
+  "address": "248 S 11th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Washington Square West",
+  "county": "Philadelphia",
+  "zip": "19107",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Pastificio Deli",
+  "address": "1528 Packer Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Ricci's Hoagies",
+  "address": "1165 S 11th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "Italian hoagie"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Sam's Sub Shop",
+  "address": "329 E State St",
+  "city": "Kennett Square",
+  "municipality": null,
+  "neighborhood": null,
+  "county": "Chester",
+  "zip": "19348",
+  "kinds": [
+   "hoagie"
+  ],
+  "dishes": [
+   "Italian sub"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to must-try hoagies (updated July 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-07",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/where-to-find-the-best-hoagies-in-philadelphia/"
+  ]
+ },
+ {
+  "name": "Dalessandro's Steaks",
+  "address": "600 Wendover St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Roxborough",
+  "county": "Philadelphia",
+  "zip": "19128",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Chubby's Steaks",
+  "address": "5826 Henry Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Roxborough",
+  "county": "Philadelphia",
+  "zip": "19128",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Pat's King of Steaks",
+  "address": "1237 E Passyunk Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Geno's Steaks",
+  "address": "1219 S 9th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Campo's Philly Cheesesteaks",
+  "address": "214 Market St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Old City",
+  "county": "Philadelphia",
+  "zip": "19106",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Ishkabibble's",
+  "address": "337 South St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Queen Village",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Jim's South Street",
+  "address": "400 South St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Queen Village",
+  "county": "Philadelphia",
+  "zip": "19147",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Max's Steaks",
+  "address": "3653 Germantown Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "North Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19140",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Saad's Halal Restaurant",
+  "address": "4500 Walnut St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "University City",
+  "county": "Philadelphia",
+  "zip": "19139",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "SQ Philip's Steaks",
+  "address": "2234 W Passyunk Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Tony and Nick's Steaks",
+  "address": "39 E Oregon Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19148",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Cleavers",
+  "address": "108 S 18th St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Rittenhouse",
+  "county": "Philadelphia",
+  "zip": "19103",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "La Nova Pizza & Steak",
+  "address": "8107 Frankford Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Holmesburg",
+  "county": "Philadelphia",
+  "zip": "19136",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Rocco's Italian Sausages & Cheese Steaks",
+  "address": "2200 Oregon Ave",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Skinny Joey's Cheesesteaks",
+  "address": "3020 S Broad St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "South Philadelphia",
+  "county": "Philadelphia",
+  "zip": "19145",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Sonny's Famous Steaks",
+  "address": "228 Market St",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Old City",
+  "county": "Philadelphia",
+  "zip": "19106",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ },
+ {
+  "name": "Taste Cheesesteak Bar",
+  "address": "1809 John F Kennedy Blvd",
+  "city": "Philadelphia",
+  "municipality": null,
+  "neighborhood": "Center City",
+  "county": "Philadelphia",
+  "zip": "19103",
+  "kinds": [
+   "cheesesteak"
+  ],
+  "dishes": [
+   "cheesesteak"
+  ],
+  "seasonal": false,
+  "season": null,
+  "founded": null,
+  "founded_note": null,
+  "branch_of": null,
+  "note": "On Visit Philly's guide to the city's cheesesteaks (updated March 2026).",
+  "website": null,
+  "open": true,
+  "evidence_date": "2026-03",
+  "sources": [
+   "https://www.visitphilly.com/articles/philadelphia/top-10-spots-for-authentic-philly-cheesesteaks/"
+  ]
+ }
+]

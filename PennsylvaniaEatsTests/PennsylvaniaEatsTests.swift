@@ -174,6 +174,12 @@ final class PennsylvaniaEatsTests: XCTestCase {
         XCTAssertGreaterThan(m.places.filter { $0.region == "Philadelphia" }.count, 4_000)
         XCTAssertEqual(m.regions.count, 9)
         XCTAssertGreaterThanOrEqual(m.count(.icons), 15)
+        XCTAssertGreaterThanOrEqual(m.count(.cheesesteaks), 40, "the hand-checked cheesesteak, roast pork and hoagie list")
+        XCTAssertGreaterThanOrEqual(m.count(.tomatoPie), 25)
+        XCTAssertGreaterThanOrEqual(m.count(.dutch), 4)
+        XCTAssertTrue(m.places.contains { $0.name == "Dalessandro's Steaks" && $0.handChecked && $0.michelin == .bib && Guide.cheesesteaks.includes($0) },
+                      "one record per place: the MICHELIN Bib and the cheesesteak guide land on the same listing")
+        XCTAssertEqual(m.places.filter { $0.name.hasPrefix("Del Rossi's") && $0.handChecked }.count, 1, "no duplicate of an honored place")
         XCTAssertEqual(Set(m.places.map(\.id)).count, m.places.count, "ids are unique")
         XCTAssertTrue(m.places.contains { $0.name == "Oyster House" && $0.city == "Philadelphia" && $0.handChecked })
         XCTAssertFalse(m.places.contains { $0.name.range(of: #"gentlem[ae]n'?s club|strip club|exotic dancer"#, options: [.regularExpression, .caseInsensitive]) != nil },
