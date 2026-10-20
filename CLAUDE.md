@@ -5,6 +5,12 @@ Started 2026-10-19 from `../state-prompts/PENNSYLVANIA_PROMPT.md`. Read `../STAT
 generated from `../ny-eats/site/index.html` (read-only) by `scripts/make-leaderboard.py`.
 
 - **Web leaderboard** (`site/`): private artifact link in `LOCAL.md` (untracked). Uses Google 2021 ratings; the app never will.
+- **App**: "Pennsylvania Eats: Restaurants", subtitle "Cheesesteaks to Pierogies", Home Screen "PA Eats"; site pennsylvania.eatsranked.com.
+
+## Nick's decisions (2026-10-19, `playbook/05-naming.md`)
+- Name above; icon = salted soft pretzel in gold on hemlock (`scripts/icon-concepts.swift` concept A, passes the shared style check).
+- Palette = Penn's Woods: hemlock #2E4E3F, barn red #A23B2A, cream #F6F1E7, gold #E8A33D only as a fill under near-black text.
+- Members' clubs and convenience counters (Wawa, Sheetz...) stay hidden with the non-restaurants.
 
 ## Data rules
 - Official records stay in their jurisdiction: ACHD placards (Allegheny only, shown as official with the date, no computed grade);
