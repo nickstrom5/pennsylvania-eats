@@ -1,0 +1,21 @@
+{
+  "name": "Pennsylvania Eats",
+  "short_name": "PA Eats",
+  "description": "Cheesesteaks to pierogies, plus 23,421 Pennsylvania restaurants.",
+  "start_url": "/pennsylvania-eats/",
+  "display": "browser",
+  "background_color": "#fbf8f2",
+  "theme_color": "#2E4E3F",
+  "icons": [
+    {
+      "src": "/pennsylvania-eats/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/pennsylvania-eats/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

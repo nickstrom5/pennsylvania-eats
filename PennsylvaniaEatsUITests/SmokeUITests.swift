@@ -131,17 +131,20 @@ final class SmokeUITests: XCTestCase {
         waitFor(search2, 5, "directory search"); search2.tap(); search2.typeText("oyster")
         let oyster = button(containing: "Oyster House")
         waitFor(oyster, 5, "Oyster House in results"); oyster.tap()
-        exerciseDetail(named: "KATZ'S DELICATESSEN")
+        exerciseDetail(named: "OYSTER HOUSE")
 
-        // every other guide opens with a list
-        for g in ["Tomato Pie & Old Forge Pizza", "Pierogies & Pittsburgh Classics", "Pennsylvania Dutch", "Soft Pretzel Bakeries", "Diners", "Pennsylvania Icons", "Oldest Taverns & Places", "Near Me", "All Restaurants"] {
+        // every other guide on Home opens with a list (Home leaves out classics with fewer than 4 hand-checked places: today pierogies,
+        // pretzels and diners, which the iPad sidebar still lists)
+        for g in ["Tomato Pie & Old Forge Pizza", "Pennsylvania Dutch", "Pennsylvania Icons", "Oldest Taverns & Places", "Near Me", "All Restaurants"] {
             fresh()
             let card = button(containing: g)
             scrollTo(card)
             card.tap()
             if g == "Near Me" { app.swipeDown() }   // any interaction lets the monitor answer the location prompt (a tap could open a row)
             waitFor(app.navigationBars[g], 5, "\(g) list")
-            if g != "Near Me" { waitFor(text(containing: "places ·"), 5, "\(g) count header") }
+            if g != "Near Me" {   // "1 place · …" or "12 places · …"
+                waitFor(app.staticTexts.matching(NSPredicate(format: "label MATCHES %@", #"^[\d,]+ places? · .*"#)).firstMatch, 5, "\(g) count header")
+            }
         }
 
         // surprise me
@@ -168,7 +171,7 @@ final class SmokeUITests: XCTestCase {
 
         // About
         app.tabBars.buttons["About"].tap()
-        waitFor(text(containing: "NEW YORK EATS"), 5, "about header")
+        waitFor(text(containing: "PENNSYLVANIA EATS"), 5, "about header")
         let privacy = app.buttons["Privacy policy"].exists ? app.buttons["Privacy policy"] : app.links["Privacy policy"]
         scrollTo(privacy)
         XCTAssertTrue(privacy.exists, "privacy link")
@@ -194,15 +197,15 @@ final class SmokeUITests: XCTestCase {
         }
         let search = app.searchFields.firstMatch
         if !search.exists { app.swipeDown() }
-        waitFor(search, 5, "search"); search.tap(); search.typeText("joes pizza")
+        waitFor(search, 5, "search"); search.tap(); search.typeText("dalessandro")
         let row = button(containing: "Dalessandro's Steaks")
         waitFor(row, 5, "Dalessandro's in results"); row.tap()
-        exerciseDetail(named: "JOE'S PIZZA")
+        exerciseDetail(named: "DALESSANDRO'S STEAKS")
         for s in ["Map", "Saved", "About"] {
             let item = sidebarItem(s)
             waitFor(item, 5, "sidebar \(s)"); item.tap()
         }
-        waitFor(text(containing: "NEW YORK EATS"), 5, "about header")
+        waitFor(text(containing: "PENNSYLVANIA EATS"), 5, "about header")
         XCUIDevice.shared.orientation = .portrait
         Thread.sleep(forTimeInterval: 1.5)
         XCTAssertEqual(app.state, .runningForeground)
@@ -254,7 +257,7 @@ final class SmokeUITests: XCTestCase {
     }
 
     /// App Review is usually in California: the map says so and stays on Pennsylvania rather than showing an empty map.
-    func testMyLocationOutsideNewYork() {
+    func testMyLocationOutsidePennsylvania() {
         openMapEverything(at: CLLocation(latitude: 37.3349, longitude: -122.009))
         waitFor(text(containing: "outside Pennsylvania"), 15, "the outside-Pennsylvania note")
         XCTAssertTrue(text(containing: "Zoom in to a neighborhood").waitForExistence(timeout: 8), "the map stayed statewide")

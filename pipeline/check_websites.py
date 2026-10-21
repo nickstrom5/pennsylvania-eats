@@ -18,7 +18,7 @@ twice isn't asked again in that run. Never bypasses bot protection.
 Verdicts carry the date they were checked; an ok verdict older than RECHECK_DAYS, or from an older version of these rules, is
 fetched again. `--fresh` re-checks everything (do that before each App Store submission).
 
-Usage: ../.venv/bin/python check_websites.py [--fresh | --retry-errors]   (reads data/pa/website_candidates.json) → data/pa/website_check.json
+Usage: ../.venv/bin/python check_websites.py [--recheck-ok] [--retry-transient] [--fresh | --retry-errors]   (reads data/pa/website_candidates.json) → data/pa/website_check.json
 ({url: {"ok": bool, "why": str, "final": str, "checked": "YYYY-MM-DD", "v": RULES}}).
 The app export (pennsylvania.py, PA_APP=1) drops every link that isn't ok, and ships no links at all without this file.
 """
@@ -38,16 +38,11 @@ import sys
 
 import requests
 
+import injection   # hijacked-page detector, ported from wi-eats (QA 2026-10-19, P1 #4)
+
 ROOT = os.path.join(os.path.dirname(__file__), "..")
 OUT = f"{ROOT}/data/pa/website_check.json"
-
-
-def save(results):
-    """Atomic: write a temp file and rename it, so a stopped run can never leave a half-written check file (CA lost 24k checks)."""
-    tmp = f"{OUT}.{os.getpid()}.tmp"
-    json.dump(results, open(tmp, "w"), indent=0)
-    os.replace(tmp, OUT)
-RULES = 2            # bump when the rules change: every cached verdict from older rules is fetched again
+RULES = 3            # bump when the rules change: every cached verdict from older rules is fetched again
 RECHECK_DAYS = 14
 TODAY = datetime.date.today().isoformat()
 UA = "PennsylvaniaEatsLinkCheck/1.0 (+https://pennsylvania.eatsranked.com/; nick@eatsranked.com)"
@@ -197,9 +192,18 @@ def check(url, name, gap=0.3):
         return {"ok": False, "why": f"http {r.status_code}", "final": final}
     text = BLOBS.sub(" ", body).lower()
     head = " ".join(a or b for a, b in HEAD.findall(text[:60_000]))
-    casino = CASINO_PLACE.search(name) or CASINO_PLACE.search(urllib.parse.urlparse(final).netloc)
-    if SPAM.search(text) or SPAM.search(final) or (not casino and (BETTING.search(head) or len(BETTING.findall(text)) >= 2)):
+    # a casino by its name or its own host, never by where a (maybe taken-over) domain redirects (wi-eats)
+    casino = CASINO_PLACE.search(name) or CASINO_PLACE.search(host) or injection.CASINO_HOSTS_OK.search(host)
+    if SPAM.search(text) or SPAM.search(final) or (not casino and (BETTING.search(head) or len(injection.BETTING_PROSE.findall(text)) >= 2)):
         return {"ok": False, "why": "gambling or adult content", "final": final}
+    # planted links and spam (casino, betting, adult, pharma, link farms; visible, hidden or off-screen): injection.py
+    reasons = injection.scan(body, host, final, name, casino=bool(casino))
+    if reasons:
+        rule, evidence = reasons[0]
+        return {"ok": False, "why": "hacked: " + rule, "final": final, "evidence": evidence[:300]}
+    pk = injection.parked(body, final)
+    if pk:
+        return {"ok": False, "why": "parked, expired or coming soon", "final": final, "evidence": pk[1][:300]}
     if PARKED.search(text[:60_000]):
         return {"ok": False, "why": "parked, expired or coming soon", "final": final}
     if bad_host(final):
@@ -227,6 +231,24 @@ def check(url, name, gap=0.3):
     return {"ok": True, "why": "ok", "final": final}
 
 
+def save_atomic(results, indent=None):
+    """Write then rename: a stopped run never leaves a half-written file (CA lost 24k checks)."""
+    with open(OUT + ".tmp", "w") as f:
+        json.dump(results, f, indent=indent)
+    os.replace(OUT + ".tmp", OUT)
+
+
+
+def safe_check(*item):
+    """check(), stamped with the day it ran ("rc": --recheck-ok skips pages already re-checked in the last 2 days, so a stopped run
+    resumes), and never raising: one malformed page must not stop a run of thousands."""
+    try:
+        res = check(*item)
+    except Exception as e:
+        res = {"ok": False, "why": "error: " + type(e).__name__, "final": item[0]}
+    return {**res, "rc": __import__("datetime").date.today().isoformat()}
+
+
 def main():
     # every link the export considered (written by pennsylvania.py, PA_APP=1), so a link dropped last time gets another chance
     cands = json.load(open(f"{ROOT}/data/pa/website_candidates.json"))
@@ -243,6 +265,12 @@ def main():
     for a in sys.argv:   # --retry-why=<verdict>: fetch again every link with that verdict (after a rule for it changed)
         if a.startswith("--retry-why="):
             prev = {u: v for u, v in prev.items() if v["why"] != a.split("=", 1)[1]}
+    if "--recheck-ok" in sys.argv:   # fetch every passing page again (after a new rule, and before each submission); resumable
+        since = (__import__("datetime").date.today() - __import__("datetime").timedelta(days=2)).isoformat()
+        prev = {u: v for u, v in prev.items() if not v["ok"] or v.get("rc", "") >= since}
+    prev = {u: v for u, v in prev.items() if not v["why"].startswith("hacked")}   # injection.py's rules keep growing
+    if "--retry-transient" in sys.argv:   # after a busy run: fetch again what was rate-limited (429) or failed to connect
+        prev = {u: v for u, v in prev.items() if not (v["why"] == "http 429" or v["why"].startswith("error:"))}
     todo, chain_hosts, brand_of = [], {}, {}
     for dom, items in jobs.items():
         uniq = list(dict.fromkeys(items))
@@ -263,15 +291,15 @@ def main():
 
     def run(item):
         nonlocal done
-        res = dict(check(*item), checked=TODAY, v=RULES)
+        res = dict(safe_check(*item), checked=TODAY, v=RULES)
         with lock:
             results[item[0]] = res
             done += 1
             if done % 500 == 0:
                 print(f"  {done}/{len(todo)}", flush=True)
-                save(results)
+                save_atomic(results)
 
-    with ThreadPoolExecutor(max_workers=24) as ex:
+    with ThreadPoolExecutor(max_workers=int(os.environ.get("CHECK_WORKERS") or 0) or 24) as ex:
         list(ex.map(run, todo))
     for dom, urls in chain_hosts.items():
         # the brand's own domain refused the check: its store links stay (the domain plainly belongs to the brand); a 404 doesn't
@@ -283,7 +311,7 @@ def main():
             elif not results[u]["ok"] and results[u]["why"] == "page doesn't mention the place" and \
                     regdom(urllib.parse.urlparse(results[u]["final"]).netloc) == dom:
                 results[u] = {**results[u], "ok": True, "why": "brand's own site (store page drawn by scripts)"}
-    save(results)
+    save_atomic(results, indent=0)
     c = collections.Counter(v["why"] if not v["ok"] else "ok" for v in results.values())
     print("results:", c.most_common())
 

@@ -1,0 +1,328 @@
+{
+ "generated": "2026-10-21",
+ "data_generated": "2026-10-19",
+ "domain": "https://nickstrom5.github.io/pennsylvania-eats",
+ "og_line": "Cheesesteaks to pierogies: 23,421 restaurants",
+ "restaurants": 23421,
+ "cities": 1431,
+ "regions": 9,
+ "records_through": {
+  "philly": "2026-10-11"
+ },
+ "hand_checked_guides": 96,
+ "checked_open": 117,
+ "honored_not_checked": 0,
+ "guide_steak": 56,
+ "guide_pie": 36,
+ "guide_dutch": 6,
+ "icons": 18,
+ "oldest_known_year": 1,
+ "michelin": 14,
+ "james_beard": 4,
+ "achd_placards": 0,
+ "philly_licensed": 3742,
+ "has_achd": false,
+ "named_not_checked": {
+  "steak": 156,
+  "pie": 4,
+  "pierogi": 8,
+  "dutch": 20,
+  "pretzel": 83,
+  "diner": 313
+ },
+ "guides_below_4": [
+  "diner",
+  "pierogi",
+  "pretzel"
+ ],
+ "website_links_verified": true,
+ "website_links_shown": 13972,
+ "website_blocklist": {
+  "entries": 1,
+  "links_dropped": {},
+  "matching_nothing": [
+   "thebutterjoint.com"
+  ]
+ },
+ "data_files": {
+  "core-philadelphia.json": {
+   "bytes": 415525,
+   "gzip": 107783
+  },
+  "detail-philadelphia.json": {
+   "bytes": 289652,
+   "gzip": 90159
+  },
+  "core-philly-suburbs.json": {
+   "bytes": 373244,
+   "gzip": 88232
+  },
+  "detail-philly-suburbs.json": {
+   "bytes": 311501,
+   "gzip": 92157
+  },
+  "core-lehigh-valley.json": {
+   "bytes": 103913,
+   "gzip": 28490
+  },
+  "detail-lehigh-valley.json": {
+   "bytes": 87903,
+   "gzip": 26815
+  },
+  "core-south-central.json": {
+   "bytes": 311225,
+   "gzip": 77650
+  },
+  "detail-south-central.json": {
+   "bytes": 259616,
+   "gzip": 74723
+  },
+  "core-northeast-poconos.json": {
+   "bytes": 179751,
+   "gzip": 49163
+  },
+  "detail-northeast-poconos.json": {
+   "bytes": 138915,
+   "gzip": 41947
+  },
+  "core-central.json": {
+   "bytes": 126147,
+   "gzip": 34531
+  },
+  "detail-central.json": {
+   "bytes": 98992,
+   "gzip": 29553
+  },
+  "core-pittsburgh-region.json": {
+   "bytes": 388547,
+   "gzip": 98307
+  },
+  "detail-pittsburgh-region.json": {
+   "bytes": 318921,
+   "gzip": 93120
+  },
+  "core-northwest.json": {
+   "bytes": 93419,
+   "gzip": 26208
+  },
+  "detail-northwest.json": {
+   "bytes": 73343,
+   "gzip": 21979
+  },
+  "core-northern-tier.json": {
+   "bytes": 36880,
+   "gzip": 11416
+  },
+  "detail-northern-tier.json": {
+   "bytes": 28156,
+   "gzip": 9144
+  },
+  "guides.json": {
+   "bytes": 15971,
+   "gzip": 6010
+  },
+  "index.json": {
+   "bytes": 30617,
+   "gzip": 10694
+  },
+  "pa_shapes.json": {
+   "bytes": 69992,
+   "gzip": 18481
+  }
+ },
+ "regions_pages": {
+  "Philadelphia": {
+   "restaurants": 5025,
+   "hand_checked": 70,
+   "honored_not_checked": 12,
+   "steak": 51,
+   "pie": 16,
+   "dutch": 1
+  },
+  "Philly Suburbs": {
+   "restaurants": 4276,
+   "hand_checked": 8,
+   "honored_not_checked": 0,
+   "steak": 5,
+   "pie": 3,
+   "dutch": 0
+  },
+  "Lehigh Valley": {
+   "restaurants": 1229,
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 0,
+   "dutch": 0
+  },
+  "South Central": {
+   "restaurants": 3491,
+   "hand_checked": 5,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 0,
+   "dutch": 5
+  },
+  "Northeast & Poconos": {
+   "restaurants": 2091,
+   "hand_checked": 18,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 17,
+   "dutch": 0
+  },
+  "Central": {
+   "restaurants": 1391,
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 0,
+   "dutch": 0
+  },
+  "Pittsburgh Region": {
+   "restaurants": 4450,
+   "hand_checked": 3,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 0,
+   "dutch": 0
+  },
+  "Northwest": {
+   "restaurants": 1051,
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 0,
+   "dutch": 0
+  },
+  "Northern Tier": {
+   "restaurants": 417,
+   "hand_checked": 1,
+   "honored_not_checked": 0,
+   "steak": 0,
+   "pie": 0,
+   "dutch": 0
+  }
+ },
+ "city_pages": {
+  "Philadelphia": {
+   "restaurants": 5025,
+   "region": "Philadelphia",
+   "hand_checked": 70,
+   "honored_not_checked": 12,
+   "nearby_shown": 6
+  },
+  "Pittsburgh": {
+   "restaurants": 1456,
+   "region": "Pittsburgh Region",
+   "hand_checked": 2,
+   "honored_not_checked": 0,
+   "nearby_shown": 1
+  },
+  "Allentown": {
+   "restaurants": 330,
+   "region": "Lehigh Valley",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Lancaster": {
+   "restaurants": 367,
+   "region": "South Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 5
+  },
+  "Erie": {
+   "restaurants": 328,
+   "region": "Northwest",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Harrisburg": {
+   "restaurants": 327,
+   "region": "South Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Reading": {
+   "restaurants": 244,
+   "region": "South Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 2
+  },
+  "Scranton": {
+   "restaurants": 227,
+   "region": "Northeast & Poconos",
+   "hand_checked": 1,
+   "honored_not_checked": 0,
+   "nearby_shown": 6
+  },
+  "State College": {
+   "restaurants": 163,
+   "region": "Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "York": {
+   "restaurants": 252,
+   "region": "South Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Bethlehem": {
+   "restaurants": 266,
+   "region": "Lehigh Valley",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Wilkes-Barre": {
+   "restaurants": 202,
+   "region": "Northeast & Poconos",
+   "hand_checked": 1,
+   "honored_not_checked": 0,
+   "nearby_shown": 6
+  },
+  "West Chester": {
+   "restaurants": 153,
+   "region": "Philly Suburbs",
+   "hand_checked": 1,
+   "honored_not_checked": 0,
+   "nearby_shown": 6
+  },
+  "Altoona": {
+   "restaurants": 134,
+   "region": "Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Williamsport": {
+   "restaurants": 123,
+   "region": "Northern Tier",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Johnstown": {
+   "restaurants": 115,
+   "region": "Central",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  },
+  "Easton": {
+   "restaurants": 202,
+   "region": "Lehigh Valley",
+   "hand_checked": 0,
+   "honored_not_checked": 0,
+   "nearby_shown": 0
+  }
+ }
+}

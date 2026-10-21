@@ -1,7 +1,10 @@
 [
  {
   "domain": "thebutterjoint.com",
-  "why": "taken over: finance-planning spam posts ('Posted on 12/02/2026 ... asset protection'), not Butterjoint's site",
-  "checked": "2026-10-19"
+  "reason": "taken over: finance-planning spam posts ('Posted on 12/02/2026 ... asset protection'), not Butterjoint's site",
+  "match": "domain",
+  "place": "Butterjoint, Pittsburgh",
+  "found": "2026-10-19",
+  "severity": "takeover"
  }
 ]

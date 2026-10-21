@@ -20,8 +20,19 @@ generated from `../ny-eats/site/index.html` (read-only) by `scripts/make-leaderb
   `official._plcb` must be written against the export's real columns (show Premises only; never Licensee, Owner, Manager).
 - Philadelphia `business_name` = "LEGAL (TRADE)": only the trade name is shown (`official._trade`).
 - Members' clubs (VFW, Legion, fire company socials, ACHD "Social Club-Bar Only") and Wawa/Sheetz-type counters are flagged
-  (`members`, `counter`) and hidden with the non-restaurants until Nick decides.
+  (`members`, `counter`) and hidden with the non-restaurants (Nick's call, 2026-10-19).
 - guide.michelin.com is behind a bot challenge: never fetched. Research sources must pass `pipeline/check_sources.py`.
+- Hijacked pages: `check_websites.py` runs `pipeline/injection.py` (identical to `../wi-eats/pipeline/injection.py`; `test_injection.py`
+  must pass). `--recheck-ok` re-fetches every passing page before a release, `--retry-transient` the 429s and connection errors;
+  `CHECK_WORKERS=4` slows a run. Saves are atomic; still back up `data/pa/website_check.json` before stopping a run.
+  `pipeline/website_blocklist.json` drops known-bad links from the app, leaderboard and website.
+
+## Waiting on Nick's hand-downloaded files (`data/raw/official/manual/`)
+Everything below stays empty or hidden until the WPRDC ACHD CSVs and the PLCB export are there; then rerun from `official.py` down.
+- ACHD placards in the app, website (`HAS_ACHD` in `scripts/make-site.py` turns the Allegheny copy on) and leaderboard.
+- `official._plcb`: write it against the export's real columns (Premises only), then liquor licenses everywhere.
+- Allegheny calibration (`calibrate.py`) and the leaderboard's Allegheny board.
+- ACHD's "records through" date (`official.records_through`, from the files' own dates).
 
 ## Rebuild
 ```bash
@@ -32,8 +43,14 @@ cd pipeline
 ../.venv/bin/python official.py && ../.venv/bin/python listings.py && ../.venv/bin/python calibrate.py
 ../.venv/bin/python pennsylvania.py        # web leaderboard data -> site/pa-*.json   (PA_APP=1 for the app data)
 ../.venv/bin/python check_sources.py       # must report 0 unusable
+../.venv/bin/python check_websites.py --recheck-ok   # every candidate link (hours); then rerun PA_APP=1 pennsylvania.py
 cd .. && .venv/bin/python scripts/make-leaderboard.py
+rm PennsylvaniaEats/Resources/Data/places-*.json && cp data/app/index.json data/app/places-*.json PennsylvaniaEats/Resources/Data/
+.venv/bin/python scripts/export-glyphs.py         # the app's food glyphs -> scripts/glyphs.json (site icons)
+.venv/bin/python scripts/make-site.py && .venv/bin/python scripts/qa-site.py   # website + web app in docs/, then headless QA
 ```
+`make-site.py` gives a guide a page and a Home card only with 4+ hand-checked places (pierogies, pretzels and diners are short), and
+the oldest-restaurants page only with 3+ dated places. `CUSTOM_DOMAIN` stays "" until Nick's `pennsylvania` CNAME exists.
 Preview: the `pa-eats-leaderboard` entry in `../.claude/launch.json` (port 8871).
 
 ## Outward actions need Nick's explicit yes, every time
