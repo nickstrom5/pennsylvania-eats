@@ -19,6 +19,8 @@ final class AppModel {
     /// mailing towns sorted by how many restaurants they have
     private(set) var towns: [(name: String, count: Int)] = []
     private(set) var cuisines: [(name: String, count: Int)] = []
+    /// Bib Gourmand places (non-restaurants left out, like the other counts): the Filters switch shows only when there are some.
+    private(set) var bibCount = 0
     /// city -> its region (a name shared by two regions keeps the one with more places)
     private(set) var townRegions: [String: String] = [:]
     /// normalized town name -> display name ("state college" -> "State College")
@@ -69,18 +71,17 @@ final class AppModel {
     nonisolated static var bundledData: URL? { Bundle.main.url(forResource: "Data", withExtension: nil) }
 
     /// Reads index.json and every region file (in parallel, off the main thread). `directory` holds index.json and places-*.json.
-    func load(from directory: URL? = AppModel.bundledData) async {
+    /// The data AppData chose at launch: the bundled Data folder, or a newer downloaded copy (OTA-DATA.md).
+    func load(from directory: URL? = AppData.folder) async {
         guard !isLoaded else { return }
         guard let directory else { loadError = "The restaurant data is missing from the app."; return }
         do {
             let (ix, places, rank) = try await Task.detached(priority: .userInitiated) { () throws -> (DataIndex, [Place], [String: Int]) in
-                let ix = try JSONDecoder().decode(DataIndex.self, from: Data(contentsOf: directory.appendingPathComponent("index.json")))
+                let ix = try AppModel.readIndex(directory)
                 let parts = try await withThrowingTaskGroup(of: (Int, [Place]).self) { group in
                     for (i, f) in ix.files.enumerated() {
                         group.addTask {
-                            let data = try Data(contentsOf: directory.appendingPathComponent(f.file))
-                            let region = try JSONDecoder().decode(RegionData.self, from: data)
-                            return (i, region.places.map { Place($0, index: ix) })
+                            (i, try AppModel.readRegion(directory.appendingPathComponent(f.file), index: ix))
                         }
                     }
                     var out: [(Int, [Place])] = []
@@ -91,8 +92,20 @@ final class AppModel {
             }.value
             apply(index: ix, places: places, nameRank: rank)
         } catch {
+            // a downloaded copy this build can't read (OTA-DATA.md): back to the data built into the app
+            if let bundled = AppData.fallback(from: directory) { return await load(from: bundled) }
             loadError = "The restaurant data couldn't be read (\(error.localizedDescription))."
         }
+    }
+
+    /// Reads index.json: launch, and the check a downloaded copy passes before it's stored (DataLayout.app, OTA-DATA.md).
+    nonisolated static func readIndex(_ directory: URL) throws -> DataIndex {
+        try JSONDecoder().decode(DataIndex.self, from: Data(contentsOf: directory.appendingPathComponent("index.json")))
+    }
+
+    /// Reads one region file into places, the same way for launch and the check.
+    nonisolated static func readRegion(_ url: URL, index ix: DataIndex) throws -> [Place] {
+        try JSONDecoder().decode(RegionData.self, from: Data(contentsOf: url)).places.map { Place($0, index: ix) }
     }
 
     /// place id -> position in A-to-Z order. Sorting 60,000 names takes a noticeable moment, so load() does it off the main thread.
@@ -120,6 +133,7 @@ final class AppModel {
         townRegions = tr.compactMapValues { $0.max { $0.value < $1.value }?.key }
         towns = tc.map { ($0.key, $0.value) }.sorted { $0.count != $1.count ? $0.count > $1.count : $0.name < $1.name }
         cuisines = cc.map { ($0.key, $0.value) }.sorted { $0.count != $1.count ? $0.count > $1.count : $0.name < $1.name }
+        bibCount = places.lazy.filter { !$0.isVenue && $0.michelin == .bib }.count
         var keys: [String: String] = [:]
         for (name, _) in towns {   // the biggest place wins a shared spelling
             let k = Search.normalizeAddress(name)
@@ -134,6 +148,7 @@ final class AppModel {
         villageKeys = vk
         if let t = filters.town, tc[t] == nil { filters.town = nil }
         if let c = filters.cuisine, cc[c] == nil { filters.cuisine = nil }
+        if filters.bibGourmand && bibCount == 0 { filters.bibGourmand = false }
         if let r = filters.region, !regions.contains(r) { filters.region = nil }
         isLoaded = true
     }

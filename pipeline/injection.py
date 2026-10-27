@@ -54,7 +54,7 @@ CASINO_HOSTS_OK = re.compile(r"mohegansun|foxwoods|seminolehardrock|hardrock|sem
                              r"tulalip|snoqualmie|muckleshoot|emeraldqueen|angelofthewinds|clearwatercasino|sevenfeathers|"
                              r"pechanga|morongo|sycuan|viejas|barona|harrahs|caesars|mgm|ameristar|isleofcapri|blackhawk|"
                              r"monarchcasino|thelodgecasino|turningstone|resortsworld|empirecitycasino|delawarenorth|"
-                             r"oxfordcasino|hollywoodcasino|pennentertainment|wynn|venetian|sands|seneca|delmonte|"
+                             r"oxfordcasino|hollywoodcasino|riverscasino|dellagoresort|tiogadowns|bataviadowns|pennentertainment|wynn|venetian|sands|seneca|delmonte|"
                              r"rivercree|ute|skyute|sleepingute|ignacio|potawatomi|hochunk|oneida|menominee|mohican|northstar|"
                              # Wisconsin's tribal casinos as they appear in hosts (Northwoods Inn links Mole Lake Casino)
                              r"molelake|sokaogon|ho-chunk|northernlights|stcroix|lakeofthetorches|badriver|legendarywaters|"
@@ -72,7 +72,7 @@ PHARMA_TEXT = re.compile(r"\b(?:" + PHARMA_WORDS + r")\b|online pharmacy|without
                          r"anabolic steroids?|steroids? (?:shop|store|drugs|for sale|online)|buy steroids?",
                          re.I)
 # "food porn" and "ski-porn" (ski films on a ski bar's TVs, Matterhorn in Maine, 2026-10-21) are ordinary restaurant copy
-ADULT_TEXT = re.compile(r"(?<!food )(?<!food-)(?<!ski )(?<!ski-)(?<!surf )(?<!surf-)\bporn\w*|\bxxx (?:videos?|movies?|sex)|\bsex (?:videos?|chat|dating|tube|cams?)|\bescorts? (?:in|service)|"
+ADULT_TEXT = re.compile(r"(?<!food )(?<!food-)(?<!ski )(?<!ski-)(?<!surf )(?<!surf-)\bporn(?! ?star martini)\w*|\bxxx (?:videos?|movies?|sex)|\bsex (?:videos?|chat|dating|tube|cams?)|\bescorts? (?:in|service)|"
                         r"\bhookups? (?:site|app)|\bnude (?:girls|cams?|videos?)|\bonlyfans\b|\bcam ?girls?\b", re.I)
 # Other link-farm vocabulary seen in hacked small-business sites (only counted inside hidden blocks or in links away).
 FARM_TEXT = re.compile(r"payday loans?|title loans?|essay (?:writing|writer|service)|write my (?:essay|paper)|buy (?:essays?|followers)|"
@@ -240,6 +240,8 @@ def scan(body, host, final, name="", casino=False):
         spammy = [(h, t) for h, t in aw if GAMBLING_HOST.search(_urlparse(h).netloc) or ADULT_HOST.search(
             _urlparse(h).netloc) or PHARMA_HOST.search(_urlparse(h).netloc) or BETTING.search(t)
             or FOREIGN_CASINO_LINK.search(t) or ADULT_TEXT.search(t) or PHARMA_TEXT.search(t) or FARM_TEXT.search(t)]
+        if casino_place:   # a real casino's own hidden menus link its online casino and sportsbook (Harrah's, 2026-10-21)
+            spammy = [(h, t) for h, t in spammy if not (GAMBLING_HOST.search(_urlparse(h).netloc) or BETTING.search(t))]
         doms = {regdom(_urlparse(h).netloc) for h, _ in suspicious}
         # display:none / visibility:hidden hide menus, dropdowns and modals with sister-restaurant links: only spam counts
         if spammy or (len(doms) >= 3 and not kind.startswith("ui:") and kind != "noscript"):

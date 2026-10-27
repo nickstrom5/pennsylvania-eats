@@ -76,6 +76,7 @@ cases = {
     "Indonesian slot title (Takarajima Sushi)": ("<html><head><title>spaceman | situs link spaceman slot gampang menang hari ini</title></head>"
                                                  "<body><p>x</p></body></html>", True),
     "food porn and ski-porn on a bar's own page (Matterhorn Ski Bar)": (add("<p>Our burgers are pure food porn. We play ski-porn on big screens, and more ski porn on Fridays.</p>"), False),
+    "porn star martini on a cocktail menu, twice (The Five Lamps)": (add("<p>Porn Star Martini $16</p><p>pornstar martini pitcher</p>"), False),
     "adult text twice still fires": (add("<p>free porn videos here</p><p>watch porn now</p>"), True),
     "3D/4D printing and movie words": (add("<p>See our 4D movie night and the 3D printed menus</p>"), False),
     "skip link off-screen, internal": (add('<a style="position:absolute;left:-9999px" href="#main">Skip to content</a>'), False),
@@ -99,6 +100,14 @@ CASINO_PAGE = add('<a href="https://sportsbook-casino.example/">sportsbook and c
 ok = bool(D.scan(CASINO_PAGE, H, F, N)) and not D.scan(CASINO_PAGE, H, F, N, casino=True)
 bad += not ok
 print(("ok  " if ok else "FAIL"), "casino=True exempts a real casino's own betting links")
+# a real casino's own page (named casino host) hides a menu linking its online casino: not a hijack
+CAS = '<html><body><h1>Harrah\'s Steakhouse</h1><div style="display:none"><a href="https://horseshoeonlinecasino.example/">Online casino</a></div></body></html>'
+ok = not D.scan(CAS, "www.caesars.com", "https://www.caesars.com/harrahs/dining", "Harrah's Steakhouse")
+bad += not ok
+print(("ok  " if ok else "FAIL"), "real casino's hidden online-casino menu")
+ok = not D.scan(CAS.replace("Harrah\'s", "Rivers"), "www.riverscasino.com", "https://www.riverscasino.com/schenectady/dining", "Rivers Casino")
+bad += not ok
+print(("ok  " if ok else "FAIL"), "Rivers Casino's own dining page")
 ok = D.parked(PAGE, F) is None
 bad += not ok
 print(("ok  " if ok else "FAIL"), "club oasis isn't parked")

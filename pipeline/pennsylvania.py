@@ -22,6 +22,8 @@ import official
 from official import street_key, street_nums, ON_PREMISE
 from listings_util import official_match, _close_words
 from check_websites import bad_host
+import private_dining    # legal-entity names -> trade names (QA 2026-10-26 PA-3; the ca-eats copy, kept identical)
+import tracking_params   # outbound links lose their tracking tags (QA 2026-10-26 PA-1; the copy every state shares)
 
 APP = os.environ.get("PA_APP") == "1"
 SITE = os.environ.get("PA_SITE") or (os.path.join(ROOT, "data", "app") if APP else os.path.join(ROOT, "site"))
@@ -1127,6 +1129,23 @@ fixes = json.load(open(f"{DATA}/research/name_fixes.json")) if os.path.exists(f"
 for fx in fixes:
     hit = (o.name_out.str.upper() == fx["name"].upper()) & (o.city == fx["city"]) & o.street.fillna("").str.startswith(fx["street_number"] + " ")
     o.loc[hit, "name_out"] = fx["fixed"]
+# ---------------------------------------------------------------- legal-entity names (QA 2026-10-26 PA-3; private_dining.py, from ca-eats)
+# A listing named for its license holder ("Bierfish Restaurant Partners, Lp", "1231 Barrage Incorporated"): the trade name after "dba",
+# the name without its Lp/Inc tail, or, for a bare holder, no place at all (unless hand-checked or honored: their names are researched).
+# Pennsylvania's guard on top: a name that is still a holder once the tail is gone (a house number, "Investors", "Group", "Assoc",
+# "Prtnrs", "Restaurants", two surnames) counts as a bare holder too.
+STILL_HOLDER = re.compile(r"^\d|\b(?:investors?|group|assoc|associates|prtnrs|partners|restaurants|holdings?|hmc)\b|^[A-Z][a-z]+ & [A-Z][a-z]+$", re.I)
+LEAD_DBA = re.compile(r"^(?:D\s?/?\s?B\s?/?\s?A|DOING BUSINESS AS)\.?:?\s+(?=\S)", re.I)   # "Dba Chick-fil-A": no holder before it
+_fix = [(LEAD_DBA.sub("", n), "dba") if LEAD_DBA.match(n) else private_dining.entity_fix(n) for n in o.name_out.fillna("")]
+_holder = pd.Series([r_ == "holder" or (r_ in ("entity suffix", "restaurant partners") and bool(STILL_HOLDER.search(t_ or "")))
+                     for t_, r_ in _fix], index=o.index)
+_renamed = pd.Series([r_ is not None for _, r_ in _fix], index=o.index) & ~_holder
+o.loc[_renamed, "name_out"] = [t_ for (t_, r_), k_ in zip(_fix, _renamed) if k_]
+_drop = _holder & ~o.hc & ~o.honored
+print("legal-entity names: renamed to the trade name", int(_renamed.sum()), o.name_out[_renamed].tolist()[:8],
+      "| holder names dropped", int(_drop.sum()), "| kept (hand-checked or honored)", int((_holder & ~_drop).sum()), flush=True)
+o = o[~_drop]
+assert not any(private_dining.entity_fix(n)[1] or LEAD_DBA.match(n) for n in o.name_out[~(o.hc | o.honored)]), "a legal-entity name is still shown"
 webs = o.web.fillna("").astype(str) + " " + o.rsite.fillna("").astype(str)
 adult = (o.name_out.str.contains(r"gentlem[ae]n'?s club|exotic dancer|strip club|adult entertainment|go-?go bar|\bdelilah'?s\b|penthouse club|"
                                   r"club risqu|christie'?s cabaret|cheerleaders\b|\bdiamonds club|\bblush\b.*\bclub", case=False, regex=True)
@@ -1220,15 +1239,28 @@ if APP:
         if x.founded == x.founded and x.founded is not None: p["f"] = int(float(x.founded))
         web = x.rsite if isinstance(x.rsite, str) else (x.web if isinstance(x.web, str) else None)
         if web:
-            w_ = clean_url(web)
-            link_cands[w_] = x.brand_n if isinstance(x.brand_n, str) else x.name_out
+            w0 = clean_url(web)
+            w_ = tracking_params.clean(w0)   # the check ran on the tagged URL before 2026-10-26: same page, same verdict
+            # tags after the "#" (Hard Rock's "#utm_source=…&utm_medium=Yext"): a fragment of nothing but tracking goes too
+            base_, hash_, frag_ = w_.partition("#")
+            if hash_ and frag_ and all(tracking_params._tracking(*(kv.partition("=")[::2])) for kv in frag_.split("&") if kv):
+                w_ = base_
+            verdict = (LINKS.get(w_) or LINKS.get(w0) or {}) if LINKS is not None else {}
+            # what the link check needs to see the page is this place's: its name, and where it is (a namesake elsewhere fails)
+            ctx = link_cands.setdefault(w_, {"name": x.brand_n if isinstance(x.brand_n, str) else x.name_out, "towns": [], "zips": [],
+                                             "phones": [], "streets": []})
+            for k_, v_ in (("towns", x.city), ("towns", x.muni), ("towns", x.place), ("zips", x.zip), ("phones", x.phone), ("streets", x.street)):
+                if isinstance(v_, str) and v_ and v_ not in ctx[k_] and len(ctx[k_]) < 40:
+                    ctx[k_].append(v_)
             # fail closed: no check file, no links; and today's directory rules apply to links checked before they were added
             if link_blocked(w_):
                 link_drops["on the website blocklist"] += 1
-            elif LINKS is not None and LINKS.get(w_, {}).get("ok") and not bad_host(w_ if w_.startswith("http") else "https://" + w_):
+            # our research found this site for this place (a hand-checked or honored record): the page needn't print its address too
+            elif (verdict.get("ok") or (isinstance(x.rsite, str) and verdict.get("why", "").startswith("page doesn't show the place's town"))) \
+                    and not bad_host(w_ if w_.startswith("http") else "https://" + w_):
                 p["w"] = w_
             else:
-                link_drops[LINKS.get(w_, {}).get("why", "not checked yet") if LINKS is not None else "no check file"] += 1
+                link_drops[verdict.get("why", "not checked yet") if LINKS is not None else "no check file"] += 1
         digits = re.sub(r"\D", "", x.phone) if isinstance(x.phone, str) else ""
         digits = digits[1:] if len(digits) == 11 and digits.startswith("1") else digits
         if len(digits) == 10 and digits[0] in "23456789": p["ph"] = "+1" + digits   # +1 and ten digits, or no phone at all
@@ -1237,7 +1269,17 @@ if APP:
         seen_ids.add(p["id"])
         # one file per region so the app decodes them in parallel at launch
         places_by.setdefault(app_part(x), []).append(p)
+    # tracking tags (ref=google, utm_*, cid=RF:YXT …) off every outbound link, any field; the store's own parameters stay
+    tp_changes = tracking_params.scrub(list(places_by.values()))
+    print("tracking tags removed:", dict(tp_changes))
+    for ps in places_by.values():   # the blocklist covers every URL field, not only the website (a source on a hijacked domain)
+        for p in ps:
+            for k_ in [k_ for k_, v_ in p.items() if isinstance(v_, str) and tracking_params.BARE_URL.match(v_) and link_blocked(v_)]:
+                link_drops[f"blocklisted {k_}"] += 1
+                del p[k_]
     print("website links dropped:", sum(link_drops.values()), link_drops.most_common(8))
+    assert not tracking_params.tracked(json.dumps(list(places_by.values()))), "a tracking tag in the app data"
+    assert not any(re.search(r"#(?:.*&)?utm_", p.get("w", "")) for ps in places_by.values() for p in ps), "a tracking fragment in the app data"
     json.dump(link_cands, open(f"{PA}/website_candidates.json", "w"), indent=0, ensure_ascii=False)
     os.makedirs(SITE, exist_ok=True)
     index = {"v": 1, **meta_common, "cities": CITIES, "mailing": PLACES, "hoods": HOODS, "munis": MUNIS, "cuisines": CUIS, "brands": BRANDS,
@@ -1306,6 +1348,10 @@ for r_ in REGIONS:
     for _k, _v in list(C.items()) + list(SP.items()):
         _bad = [j for j, x in enumerate(_v) if (isinstance(x, float) and x != x) or (isinstance(x, list) and any(isinstance(y, float) and y != y for y in x))]
         if _bad: print("NaN in", r_, _k, len(_bad), _v[_bad[0]])
+    tracking_params.scrub([C, SP, extra])   # the leaderboard's links lose their tracking tags too
+    for e in extra.values():
+        for k_ in [k_ for k_, v_ in e.items() if isinstance(v_, str) and tracking_params.BARE_URL.match(v_) and link_blocked(v_)]:
+            del e[k_]
     fn, dn = f"pa-{SLUG[r_]}.json", f"pa-{SLUG[r_]}-detail.json"
     json.dump(clean({"region": r_, "start": start, "n": len(sub), "cols": C, "sparse": SP}), open(f"{SITE}/{fn}", "w"), separators=(",", ":"), allow_nan=False, default=str)
     json.dump(clean({"region": r_, "extra": {str(k): v for k, v in extra.items()}}), open(f"{SITE}/{dn}", "w"), separators=(",", ":"), allow_nan=False, default=str)

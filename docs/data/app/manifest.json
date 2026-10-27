@@ -1,0 +1,90 @@
+{
+ "schema": 1,
+ "version": "2026-10-19.3",
+ "records_through": "2026-10-19",
+ "published": "2026-10-26T20:57:19Z",
+ "min_app_build": 1,
+ "files": {
+  "index": {
+   "path": "index-33d0e775a0ca.json",
+   "sha256": "33d0e775a0cafacce2ed11a7994dcb30ceef047166116f374ab0fd90d7c5fbd9",
+   "bytes": 59315,
+   "rows": 0
+  },
+  "places-central": {
+   "path": "places-central-842a8274b349.json",
+   "sha256": "842a8274b34922afaa71806071b432095b2a5c146f334ee0a383b979206164d1",
+   "bytes": 290113,
+   "rows": 1431
+  },
+  "places-lehigh-valley": {
+   "path": "places-lehigh-valley-923cc8cb0a08.json",
+   "sha256": "923cc8cb0a08cf99255b7fd6aa057e92b632ed1732aabebc37eea63b7d590ed7",
+   "bytes": 256104,
+   "rows": 1257
+  },
+  "places-northeast-poconos": {
+   "path": "places-northeast-poconos-db5169eef5ae.json",
+   "sha256": "db5169eef5aeb9c2a86880ea878c12ea5051ea68ef1258fee177f5f68a730ca9",
+   "bytes": 423833,
+   "rows": 2142
+  },
+  "places-northern-tier": {
+   "path": "places-northern-tier-e4a3385f2919.json",
+   "sha256": "e4a3385f2919f00fed0e0ffdf26f1141cd25b299b34efeac4e63be3fc5d5a28f",
+   "bytes": 85103,
+   "rows": 434
+  },
+  "places-northwest": {
+   "path": "places-northwest-3886ed259bde.json",
+   "sha256": "3886ed259bde3137add58bfd4d065a70d697cb356bf3154b333d6d35236d8eaa",
+   "bytes": 217439,
+   "rows": 1077
+  },
+  "places-philadelphia": {
+   "path": "places-philadelphia-75c03fae26e5.json",
+   "sha256": "75c03fae26e5fced7de56bf972455bb719ac4cc71889e3aa79c8562d6908ca56",
+   "bytes": 1040224,
+   "rows": 5345
+  },
+  "places-philly-suburbs": {
+   "path": "places-philly-suburbs-6c5433d26e0e.json",
+   "sha256": "6c5433d26e0e5fee37e4ae2414ec5d8e7a63a483c3aae911ca57bc4d2e8a40ae",
+   "bytes": 897916,
+   "rows": 4330
+  },
+  "places-pittsburgh-region": {
+   "path": "places-pittsburgh-region-ed2addab07b3.json",
+   "sha256": "ed2addab07b3f13a732e1fe0c1a03449f4b17e1c5cf566b63fe8ec68f6ef5dd8",
+   "bytes": 926724,
+   "rows": 4547
+  },
+  "places-south-central": {
+   "path": "places-south-central-876584478cf0.json",
+   "sha256": "876584478cf0ab26d63dae039cf9b4ff4e10864f2f4840a0df7fcff316264d72",
+   "bytes": 743404,
+   "rows": 3569
+  }
+ },
+ "counts": {
+  "places": 24132,
+  "files": 10,
+  "bytes": 4940175,
+  "restaurants": 23412
+ },
+ "previous": {
+  "version": "2026-10-19.2",
+  "files": {
+   "index": "index-33d0e775a0ca.json",
+   "places-central": "places-central-842a8274b349.json",
+   "places-lehigh-valley": "places-lehigh-valley-923cc8cb0a08.json",
+   "places-northeast-poconos": "places-northeast-poconos-db5169eef5ae.json",
+   "places-northern-tier": "places-northern-tier-e4a3385f2919.json",
+   "places-northwest": "places-northwest-3886ed259bde.json",
+   "places-philadelphia": "places-philadelphia-c9db76d0ba54.json",
+   "places-philly-suburbs": "places-philly-suburbs-6c5433d26e0e.json",
+   "places-pittsburgh-region": "places-pittsburgh-region-ed2addab07b3.json",
+   "places-south-central": "places-south-central-876584478cf0.json"
+  }
+ }
+}

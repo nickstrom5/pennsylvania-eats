@@ -160,7 +160,7 @@
   // nickstrom5.github.io is shared by every Eats Ranked site, so a stored value can be anything: keep only what has the right shape
   const saved = new Set([].concat(store.get("saved", [])).filter((x) => typeof x === "string"));
   const savedRegion = dict(Object.fromEntries(Object.entries(Object(store.get("savedr", {}))).filter(([k, v]) => saved.has(k) && typeof v === "string")));
-  const st = { g: "steak", r: "philadelphia", q: "", sort: "", town: "", cuisine: "", chains: false, conf: false, p: "" };
+  const st = { g: "steak", r: "philadelphia", q: "", sort: "", town: "", cuisine: "", chains: false, conf: false, bib: false, p: "" };
   const NY_BOX = { s: 39.71, n: 42.27, w: -80.53, e: -74.68 };   // Pennsylvania's box (the name is the family's)
   const regionIdx = (slug) => SLUGS.indexOf(slug);
   const regionName = (slug) => (slug === "all" ? "Pennsylvania" : REGIONS[regionIdx(slug)] || "");
@@ -202,6 +202,7 @@
     if (st.cuisine && p.cu !== st.cuisine) return false;
     if (st.chains && p.ch >= 5 && !(p.hc === 1 && !p.br)) return false;   // a hand-checked original stays; its branches can go
     if (st.conf && p.t === 0 && !p.hc) return false;      // hand-checked counts as confirmed
+    if (st.bib && p.mi !== 2) return false;               // MICHELIN Bib Gourmand only, as the app's Filters switch
     return true;
   }
 
@@ -296,7 +297,7 @@
     }
     current = list();
     if (!current.length && followTown()) return;   // nothing here, and the search names a town elsewhere: go there
-    const filters = [st.town && `in ${st.town}`, st.cuisine && st.cuisine, st.chains && "no chains", st.conf && "high-confidence only"].filter(Boolean);
+    const filters = [st.town && `in ${st.town}`, st.cuisine && st.cuisine, st.chains && "no chains", st.conf && "high-confidence only", st.bib && "Bib Gourmand"].filter(Boolean);
     const where = st.g === "saved" ? "" : ` · ${st.r === "all" ? "all of Pennsylvania" : regionName(st.r)}`;
     // "Nearest" before there's a fix (asking, denied, timed out) is the Featured order: the label says so, not "Nearest"
     const label = o === "nearest" && !here ? (g.needsHere ? "no location yet" : "Featured first (no location yet)") : SORT_LABEL[o];
@@ -809,6 +810,7 @@
   // the town and kind menus follow the region in view; the neighborhood keys follow what's loaded
   function refreshLookups() {
     const towns = new Map(), cuis = new Map(), vills = new Set();
+    let bibs = 0;   // Bib Gourmand places in view, counted like the kinds: the box shows only when there are some
     for (const p of P) {
       if (p.hd) vills.add(p.hd);
       if (p.pl) vills.add(p.pl);
@@ -816,6 +818,7 @@
       if (p.v || (st.r !== "all" && p.ri !== regionIdx(st.r))) continue;
       if (p.c) towns.set(p.c, (towns.get(p.c) || 0) + 1);
       cuis.set(p.cu, (cuis.get(p.cu) || 0) + 1);
+      if (p.mi === 2) bibs += 1;
     }
     const tk = new Set(TOWN_KEYS.map(([k]) => k));
     const vk = dict();
@@ -826,6 +829,8 @@
     if (st.cuisine && !cuis.has(st.cuisine)) cuis.set(st.cuisine, 0);
     $("#ex-cuisine").innerHTML = '<option value="">All kinds</option>' + [...cuis.entries()].sort((a, b) => b[1] - a[1]).map(([c, k]) => `<option value="${esc(c)}">${esc(c)} (${fmt(k)})</option>`).join("");
     $("#ex-town").value = st.town; $("#ex-cuisine").value = st.cuisine;
+    $("#ex-bibwrap").hidden = !bibs && !st.bib;          // a box from a link stays while its region loads
+    $("#ex-bibn").textContent = `(${fmt(bibs)})`;
   }
 
   async function load() {
@@ -854,7 +859,7 @@
     const r = h.get("r");
     st.r = r === "all" || SLUGS.includes(r) ? r : "philadelphia";
     st.q = h.get("q") || ""; st.town = h.get("town") || ""; st.cuisine = h.get("kind") || "";
-    st.chains = h.get("chains") === "1"; st.conf = h.get("conf") === "1";
+    st.chains = h.get("chains") === "1"; st.conf = h.get("conf") === "1"; st.bib = h.get("bib") === "1";
     st.sort = h.get("sort") || ""; st.p = h.get("p") || "";
     view = h.get("view") === "map" ? "map" : "list";
   }
@@ -863,7 +868,7 @@
     const h = new URLSearchParams();
     h.set("g", st.g); h.set("r", st.r);
     if (st.q) h.set("q", st.q); if (st.town) h.set("town", st.town); if (st.cuisine) h.set("kind", st.cuisine);
-    if (st.chains) h.set("chains", "1"); if (st.conf) h.set("conf", "1"); if (st.sort) h.set("sort", st.sort);
+    if (st.chains) h.set("chains", "1"); if (st.conf) h.set("conf", "1"); if (st.bib) h.set("bib", "1"); if (st.sort) h.set("sort", st.sort);
     if (view === "map") h.set("view", "map"); if (st.p) h.set("p", st.p);
     if (push) history.pushState({ place: true }, "", "#" + h.toString());
     else history.replaceState(history.state, "", "#" + h.toString());
@@ -969,7 +974,8 @@
     $("#ex-cuisine").onchange = (e) => { st.cuisine = e.target.value; shown = 100; render(); };
     $("#ex-chains").onchange = (e) => { st.chains = e.target.checked; shown = 100; render(); };
     $("#ex-conf").onchange = (e) => { st.conf = e.target.checked; shown = 100; render(); };
-    $("#ex-clear").onclick = () => { st.town = st.cuisine = ""; st.chains = st.conf = false; syncInputs(); shown = 100; render(); };
+    $("#ex-bib").onchange = (e) => { st.bib = e.target.checked; shown = 100; render(); };
+    $("#ex-clear").onclick = () => { st.town = st.cuisine = ""; st.chains = st.conf = st.bib = false; syncInputs(); shown = 100; render(); };
     $("#ex-locate").onclick = locate;
     $("#ex-more").onclick = () => { shown += 200; renderList(order()); };
     document.querySelectorAll(".ex-view button").forEach((b) => b.onclick = () => setView(b.dataset.v));
@@ -984,7 +990,7 @@
   }
   function syncInputs() {
     $("#ex-q").value = st.q; $("#ex-region").value = st.r; $("#ex-town").value = st.town; $("#ex-cuisine").value = st.cuisine;
-    $("#ex-chains").checked = st.chains; $("#ex-conf").checked = st.conf;
+    $("#ex-chains").checked = st.chains; $("#ex-conf").checked = st.conf; $("#ex-bib").checked = st.bib;
   }
 
   // the guide pills scroll sideways on a phone: fade the edge while more are off to the right

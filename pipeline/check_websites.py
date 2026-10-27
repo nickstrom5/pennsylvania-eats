@@ -112,6 +112,85 @@ def bad_host(url):
         or bool(SHADY.search(rd))
 
 
+# what Pennsylvania's two big cities' own sites put in their domains instead of the town (abefisherphilly.com, pghtacoshop.com)
+TOWN_NICKS = {"Philadelphia": ("philly", "phl"), "Pittsburgh": ("pgh", "pittsburgh")}
+# town names that are everyday words prove nothing on their own (a page saying "media" or "intercourse" isn't in Media or Intercourse)
+COMMON_TOWNS = {"media", "intercourse", "paradise", "bird", "hand", "blue", "ball", "king", "prussia", "center", "centre", "summit", "valley",
+                "forest", "mountain", "hills", "park", "plains", "springs", "glen", "eagle", "mars", "industry", "economy", "progress",
+                "independence", "freedom", "harmony", "concord", "pleasant", "fairview", "liberty", "union", "shore", "tower", "jersey",
+                "indiana", "beaver", "elizabeth", "franklin", "washington", "jefferson", "lincoln", "jackson", "clinton", "marion", "warren"}
+
+
+def located(text, final, ctx):
+    """The page says where the place is: its town (unless the town's name is an everyday word), zip, phone or house number + street."""
+    hay = " " + text + " " + norm(final) + " "
+    dom = norm(urllib.parse.urlparse(final).netloc).replace(" ", "")
+    for t in ctx.get("towns", []):
+        t = norm(t)
+        if len(t) >= 4 and t not in COMMON_TOWNS and (f" {t} " in hay or (len(t) >= 6 and t.replace(" ", "") in dom)):
+            return "town"
+    for z in ctx.get("zips", []):
+        if re.search(rf"\b{re.escape(str(z)[:5])}\b", hay):
+            return "zip"
+    digits = {re.sub(r"\D", "", m)[-10:] for m in re.findall(r"\(?\d{3}\)?[\s.\-]?\d{3}[\s.\-]?\d{4}", text)}
+    for ph in ctx.get("phones", []):
+        d = re.sub(r"\D", "", ph)[-10:]
+        if len(d) == 10 and d in digits:
+            return "phone"
+    for st in ctx.get("streets", []):
+        m = re.match(r"\s*(\d+)\s+(.*)", norm(st))
+        if m:
+            core = [w for w in m.group(2).split() if len(w) >= 3 and w not in STREET_WORDS]
+            if core and f" {m.group(1)} " in hay and re.search(rf"\b{m.group(1)}\s+(?:\w+\s+){{0,2}}{re.escape(core[0])}\b", hay):
+                return "street"
+    return None
+
+
+GENERAL_TLD = {"com", "net", "org", "co", "us", "biz", "info", "restaurant", "restaurants", "bar", "cafe", "pizza", "coffee", "kitchen",
+               "menu", "beer", "wine", "bio", "site", "online", "store", "shop", "rest", "food", "pub", "bistro", "life", "page"}
+
+
+def label(url):
+    host = urllib.parse.urlparse(url if "//" in url else "https://" + url).netloc.lower().removeprefix("www.")
+    parts = host.split(".")
+    return (parts[-2] if len(parts) >= 2 else host), parts[-1]
+
+
+SUFFIXES = ("", "co", "company", "inc", "llc", "restaurant", "restaurants", "bar", "grill", "cafe", "pizza", "pizzeria", "kitchen", "eatery",
+            "bbq", "tavern", "pub", "coffee", "foods", "deli", "bakery", "brewing", "brewery", "wines", "winery", "online", "pennsylvania", "pa")
+
+
+def spells_name(url, name):
+    """The domain is the place's name spelled out (stonefishsushi.com for Stonefish Sushi, zerodegreescompany.com), with at most a business
+    word after it: a namesake elsewhere adds its town (greatwallbedford.com) or uses another ending (hound.vet). Names under 8 letters
+    and names with no distinctive word don't count."""
+    lab, tld = label(url)
+    lab = lab.replace("-", "")
+    full = "".join(w for w in norm(name.replace("&", " and ")).split() if w not in ("the", "a", "of"))
+    full_noand = full.replace("and", "")
+    ws = words(name)
+    if tld not in GENERAL_TLD or not ws or len(full) < 8 or not (len(ws) >= 2 or len(ws[0]) >= 7):   # "Pete's Cafe" has namesakes
+        return False
+    for f in {full, full_noand}:
+        for pre in ("", "the", "eat"):
+            if lab.startswith(pre + f) and lab[len(pre + f):] in SUFFIXES:
+                return True
+    return False
+
+
+def town_site(url, ctx):
+    """A town's own or tourism site (manitousprings.org, visitestespark.com) or a chamber's is about the town, not the restaurant."""
+    lab, _ = label(url)
+    lab = lab.replace("-", "")
+    towns = {norm(t).replace(" ", "") for t in ctx.get("towns", [])}
+    nm = norm(ctx.get("name") or "").replace(" ", "")
+    return (lab in towns and lab not in nm) or lab.startswith("visit") or "chamber" in lab or lab.startswith(("cityof", "townof"))
+
+
+STREET_WORDS = set("st street ave avenue blvd boulevard rd road dr drive ln lane way pkwy parkway hwy highway us co state route ct court "
+                   "pl place cir circle ter trl trail sq unit ste suite north south east west n s e w ne nw se sw".split())
+
+
 def words(name):
     return [w for w in norm(name).split() if len(w) >= 4 and w not in GENERIC]
 
@@ -171,7 +250,9 @@ def fetch(u, gap):
     return r, body, final, None
 
 
-def check(url, name, gap=0.3):
+def check(url, name, gap=0.3, ctx=None):
+    """ctx: the place's name, towns, zips, phones and streets (website_candidates.json); a bare name (older file) skips the location rule."""
+    ctx = ctx if isinstance(ctx, dict) else {"name": name}
     u = url if url.startswith("http") else "https://" + url
     host = urllib.parse.urlparse(u).netloc.lower()
     if bad_host(u):
@@ -228,6 +309,18 @@ def check(url, name, gap=0.3):
         return {"ok": False, "why": "page doesn't mention the place", "final": final}
     if not same and not any(w in norm(urllib.parse.urlparse(final).netloc) for w in ws):
         return {"ok": False, "why": "moved to another domain", "final": final}
+    if town_site(final, ctx):
+        return {"ok": False, "why": "town, tourism or chamber site", "final": final}
+    # the page shows where the place is (from co-eats, QA 2026-10-26 PA-2): goldenstar.com named "Golden Star" but is a Kansas mop maker.
+    # A chain's own domain (mcdonalds.com) names no single store's town; a domain that spells the whole name is the place's own.
+    dom = norm(urllib.parse.urlparse(final).netloc)
+    if any(ctx.get(k) for k in ("towns", "zips", "phones", "streets")):
+        # a chain's store page may land on a shorter brand domain (burgerking.com -> bk.com): the link's own domain counts too
+        where = "brand's own domain" if ctx.get("chain") and any(w in dom or w in norm(host) for w in ws) else \
+            "town in the domain" if any(nick in dom.replace(" ", "") for t in ctx.get("towns", []) for nick in TOWN_NICKS.get(t, ())) else \
+            "domain spells the name" if spells_name(final, name) else located(norm(BLOBS.sub(" ", body)), final, ctx)
+        if not where:
+            return {"ok": False, "why": "page doesn't show the place's town, address or phone", "final": final}
     return {"ok": True, "why": "ok", "final": final}
 
 
@@ -253,9 +346,10 @@ def main():
     # every link the export considered (written by pennsylvania.py, PA_APP=1), so a link dropped last time gets another chance
     cands = json.load(open(f"{ROOT}/data/pa/website_candidates.json"))
     jobs = collections.defaultdict(list)   # registered domain -> [(url, name)]
-    for w, name in cands.items():
+    ctxs = {w: c for w, c in cands.items() if isinstance(c, dict)}   # name + where the place is; an older file has the name only
+    for w, c in cands.items():
         u = w if w.startswith("http") else "https://" + w
-        jobs[regdom(urllib.parse.urlparse(u).netloc)].append((w, name))
+        jobs[regdom(urllib.parse.urlparse(u).netloc)].append((w, c["name"] if isinstance(c, dict) else c))
     prev = json.load(open(OUT)) if os.path.exists(OUT) and "--fresh" not in sys.argv else {}
     stale = (datetime.date.today() - datetime.timedelta(days=RECHECK_DAYS)).isoformat()
     # an ok verdict is trusted for RECHECK_DAYS under the same rules; a failure is kept for the same time (a dead site gets another chance)
@@ -291,7 +385,8 @@ def main():
 
     def run(item):
         nonlocal done
-        res = dict(safe_check(*item), checked=TODAY, v=RULES)
+        ctx = dict(ctxs.get(item[0]) or {}, chain=regdom(urllib.parse.urlparse(item[0] if item[0].startswith("http") else "https://" + item[0]).netloc) in chain_hosts)
+        res = dict(safe_check(*item, ctx), checked=TODAY, v=RULES)
         with lock:
             results[item[0]] = res
             done += 1

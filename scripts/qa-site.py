@@ -104,7 +104,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 def serve():
     port = int(os.environ.get("QA_PORT") or 0)   # a fixed port when the machine is shared (each session has its own range)
-    srv = http.server.ThreadingHTTPServer(("127.0.0.1", port), functools.partial(Handler, directory=DOCS))
+    # the statewide view asks for all 18 region files at once: the default listen queue (5) resets some of them under load
+    srv = type("Server", (http.server.ThreadingHTTPServer,), {"request_queue_size": 64})(("127.0.0.1", port), functools.partial(Handler, directory=DOCS))
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     return f"http://127.0.0.1:{srv.server_address[1]}"
 
@@ -159,7 +160,7 @@ def read_cols(d):
         ad = g("ad")
         rows.append({"id": g("id"), "n": g("n"), "c": lk("cities", g("c")), "co": g("co"), "cu": lk("cuisines", g("cu")), "t": g("t") or 0,
                      "la": None if g("la") is None else (g("la") + d["la0"]) / 1e5, "lo": None if g("lo") is None else (g("lo") + d["lo0"]) / 1e5,
-                     "a": g("a"), "pl": lk("mailing", g("pl")), "hd": lk("hoods", g("hd")), "ch": g("ch") or 1, "v": g("v") == 1, "hc": g("hc") or 0, "k": g("k") or 0, "ip": g("ip"), "f": g("f"),
+                     "a": g("a"), "pl": lk("mailing", g("pl")), "hd": lk("hoods", g("hd")), "ch": g("ch") or 1, "v": g("v") == 1, "hc": g("hc") or 0, "k": g("k") or 0, "ip": g("ip"), "f": g("f"), "mi": g("mi"),
                      "br": g("br"), "ap": lk("placards", g("ap")), "ad": None if ad is None else (datetime.date(2000, 1, 1) + datetime.timedelta(days=ad)).isoformat(),
                      "phl": g("phl") == 1,
                      "ri": g("ri"), "rr": g("rr") if g("rr") is not None else i})
@@ -230,6 +231,23 @@ def check_static_pages(data, problems):
     rt_ok = {nice_date(v) for v in rt.values()}
     wc_file = os.path.join(ROOT, "data", "pa", "website_check.json")
     link_ok = json.load(open(wc_file)) if os.path.exists(wc_file) else None   # pipeline/check_websites.py's verdict per link
+    sys.path.insert(0, os.path.join(ROOT, "pipeline"))
+    import tracking_params
+    if link_ok is not None:   # the same page without its tracking tags keeps the verdict, as in make-site.py
+        for _url, _verdict in list(link_ok.items()):
+            link_ok.setdefault(tracking_params.clean(_url), _verdict)
+    # the over-the-air copy keeps the previous version's files for phones part way through an update: only the current one counts
+    mf = os.path.join(DOCS, "data", "app", "manifest.json")
+    current = {os.path.basename(v["path"]) for v in json.load(open(mf))["files"].values()} | {"manifest.json"} if os.path.exists(mf) else None
+    for d, _, files in os.walk(DOCS):   # no tracking tag on any link we publish (QA 2026-10-26 PA-1), pages and data alike
+        for fn in files:
+            if current is not None and os.path.abspath(d) == os.path.abspath(os.path.dirname(mf)) and fn not in current:
+                continue
+            if fn.endswith((".html", ".json", ".js")):
+                txt = open(os.path.join(d, fn), encoding="utf-8").read()
+                hits = tracking_params.tracked(txt) + re.findall(r"""https?://[^\s"'<>\\#]+#(?:[^\s"'<>\\]*&)?utm_[^\s"'<>\\]*""", txt.replace("\\/", "/"))
+                if hits:
+                    problems.append(f"{os.path.relpath(os.path.join(d, fn), DOCS)}: {len(hits)} links with tracking tags, e.g. {hits[0]}")
     vouched = lambda r, href: (link_ok.get(href) or {}).get("ok") if link_ok is not None else (r["hc"] == 1 and r["k"])
     for f in all_html():
         name = os.path.relpath(f, DOCS)
@@ -698,6 +716,27 @@ def check_explore(page, base, width, data, problems, errors):
         if got != want:
             problems.append(f"{where}: the {g} guide shows {len(got)} places, expected the {len(want)} hand-checked ones")
 
+    # 1b. the Bib Gourmand box, statewide: exactly the MICHELIN Bib Gourmands (mi 2, a guide row or a region row), nothing else
+    bibs = {key(r) for r in data.guides + data.all if r["mi"] == 2 and not r["v"]}
+    fresh("g=all&r=all&bib=1")
+    wait_js(page, "(n) => document.querySelector('#ex-count').textContent.startsWith(n + ' place')", 30000, f"{len(bibs):,}")
+    got = all_rows(page)
+    box = page.locator("#ex-bibwrap")
+    if not bibs:
+        problems.append(f"{where}: the data has no Bib Gourmand (mi 2) places")
+    elif {r["key"] for r in got} != bibs:
+        problems.append(f"{where}: Bib Gourmand shows {len(got)} places, expected the {len(bibs)} with mi 2 "
+                        f"(extra {sorted({r['key'] for r in got} - bibs)[:3]}, missing {sorted(bibs - {r['key'] for r in got})[:3]})")
+    if not box.is_visible() or box.inner_text().strip() != f"Bib Gourmand ({len(bibs):,})" or not page.locator("#ex-bib").is_checked():
+        problems.append(f"{where}: the Bib Gourmand box isn't shown ticked as 'Bib Gourmand ({len(bibs):,})' ({box.inner_text().strip()!r})")
+    tags = page.evaluate("[...document.querySelectorAll('#ex-list .ex-row')].map(r => [...r.querySelectorAll('.tag-hon')].map(t => t.textContent))")
+    wrong = [t for t in tags if "Bib Gourmand" not in t or any("MICHELIN Star" in x for x in t)]
+    if wrong:
+        problems.append(f"{where}: Bib Gourmand rows without the Bib Gourmand tag, or with stars: {wrong[:3]}")
+    page.locator("#ex-bib").uncheck()
+    if not wait_js(page, "(n) => !document.querySelector('#ex-count').textContent.startsWith(n + ' place')", 5000, f"{len(bibs):,}"):
+        problems.append(f"{where}: unticking Bib Gourmand didn't bring the whole list back")
+
     # 2. the region picker loads a region's file and lists only that region; the count is the region's restaurants
     fresh("g=all&r=philadelphia")
     pgh = slug_i("pittsburgh-region")
@@ -811,6 +850,17 @@ def check_explore(page, base, width, data, problems, errors):
     problems.extend(f"{where}: CSP violation: {x}" for x in page.evaluate("window.__csp || []"))
 
 
+def app_data_checks(problems):
+    """docs/data/app/, the app's data updates (scripts/publish_app_data.py, OTA-DATA.md): every manifest entry's hash, size and
+    row count match its file, the head file's date matches, and no old copy lingers."""
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from publish_app_data import check_app_data, app_data_dir
+    found, notes = check_app_data(DOCS, app_data_dir())
+    problems.extend("app data: " + x for x in found)
+    for x in notes:
+        print("  note: app data:", x)
+
+
 def main():
     base = serve()
     pages = [base + urllib.parse.urlparse(u).path for u in SITEMAP]
@@ -824,6 +874,7 @@ def main():
     check_copy_decisions(problems)
     check_copy_claims(data, problems)
     check_blocklist(problems)
+    app_data_checks(problems)
     if SHOTS:
         os.makedirs(SHOTS, exist_ok=True)
     with sync_playwright() as pw:

@@ -27,6 +27,7 @@ import json
 import math
 import os
 import re
+import sys
 import shutil
 import statistics
 import subprocess
@@ -51,7 +52,8 @@ EMAIL = "nick@eatsranked.com"
 APP_STORE_URL = ""
 TODAY = datetime.date.today().isoformat()
 CHECKED = "October 2026"
-PRIVACY_UPDATED = TERMS_UPDATED = "2026-10-21"
+TERMS_UPDATED = "2026-10-21"
+PRIVACY_UPDATED = "2026-10-26"   # the app's data updates (OTA-DATA.md)
 MONTHS = "Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec".split()
 # The PA Department of Agriculture's own disclosure on its inspection search (pafoodsafety.pa.gov), quoted verbatim wherever we link it
 PDA_DISCLOSURE = ("Please remember that any inspection is a 'snapshot' of the day and time of the inspection. An inspection conducted on "
@@ -81,6 +83,13 @@ OUTLINE = json.load(open(f"{ROOT}/playbook/state-outline.json"))
 # exists, only the hand-checked research's own links are shown: no link beats a wrong link (the playbook's hijacked-domain lesson).
 WEB_CHECK_FILE = f"{ROOT}/data/pa/website_check.json"
 WEB_CHECK = json.load(open(WEB_CHECK_FILE)) if os.path.exists(WEB_CHECK_FILE) else None
+if WEB_CHECK is not None:
+    # the export strips tracking tags (pipeline/tracking_params.py) after the check ran on the tagged URL: the same page, so the
+    # cleaned URL keeps that verdict (as in ny-eats). The next check run records the cleaned URLs themselves.
+    sys.path.insert(0, f"{ROOT}/pipeline")
+    import tracking_params
+    for _url, _verdict in list(WEB_CHECK.items()):
+        WEB_CHECK.setdefault(tracking_params.clean(_url), _verdict)
 # Websites the site never links, whatever the link check said (pipeline/website_blocklist.json: hacked with hidden casino or pharmacy
 # links, expired, or another business's page): [{"domain", "match": "domain" (it and every subdomain) | "url" (that page only, for one
 # site on a shared host; give "url" too), "place", "reason", "severity", "evidence", "found"}]. Only the link goes, never the place: it
@@ -1666,6 +1675,7 @@ body = f"""{nav}
         <select id="ex-cuisine" aria-label="Kind of place" disabled><option value="">All kinds</option></select>
         <label><input type="checkbox" id="ex-chains" disabled> Hide chains</label>
         <label><input type="checkbox" id="ex-conf" disabled> High-confidence only</label>
+        <label id="ex-bibwrap" hidden><input type="checkbox" id="ex-bib" disabled> <span>Bib Gourmand <span id="ex-bibn"></span></span></label>
         <button type="button" id="ex-clear" class="ex-small" hidden>Clear filters</button>
         <div class="ex-view" role="group" aria-label="View"><button type="button" data-v="list" aria-pressed="true" disabled>List</button><button type="button" data-v="map" aria-pressed="false" disabled>Map</button></div>
       </div>
@@ -1822,6 +1832,7 @@ body = f"""{nav}
       <li><b>Location.</b> If you allow it, your location is used on your device to sort places by distance and show where you are on the map. It is never sent to us. You can turn it off in Settings at any time.</li>
       <li><b>Saved places and filters</b> are stored only on your device and are deleted when you delete the app.</li>
       <li><b>Apple Maps.</b> When you open a place's hours and photos, or ask for directions, the app asks Apple Maps for that place. Apple handles that request under <a href="https://www.apple.com/legal/privacy/" rel="noopener">Apple's privacy policy</a>, as it does for any app that shows a map.</li>
+      <li><b>Data updates.</b> When you open the app, it checks this website for newer restaurant data, at most once a day (or an hour later if a check didn't go through), and downloads it when there is some. These requests carry no location or identifiers. GitHub, which hosts this site, may keep standard server logs of them, as it does for any visit here.</li>
       <li><b>Spotlight.</b> The app may add its hand-checked places to your device's search index so you can find them from Spotlight. That index stays on your device.</li>
       <li><b>Calls, websites, and email</b> you start from a place open in the Phone app, your browser or Mail, and are handled by them.</li>
     </ul>

@@ -26,6 +26,18 @@ generated from `../ny-eats/site/index.html` (read-only) by `scripts/make-leaderb
   must pass). `--recheck-ok` re-fetches every passing page before a release, `--retry-transient` the 429s and connection errors;
   `CHECK_WORKERS=4` slows a run. Saves are atomic; still back up `data/pa/website_check.json` before stopping a run.
   `pipeline/website_blocklist.json` drops known-bad links from the app, leaderboard and website.
+- Links and names (QA 2026-10-26, PA-1/2/3/5): `pipeline/tracking_params.py` (the copy every state shares) strips tracking tags from
+  every link in the app and leaderboard exports, plus a tracking-only `#utm_…` fragment (PA-local); `website_blocklist.json` is the shared
+  877-entry list minus ten domains that are right for PA (gertrudehawkchocolates, mcgrathspub, littletokyopittsburgh, mandyspizza,
+  bandbbagels, thecountryclubdiner, ludwigsoysterbar, alecraft.beer, shakingcrab, romeos-pizza) plus pavisnet.com, applied to every URL
+  field. `check_websites.py` has Colorado's location rule: the page shows the place's town (or philly/pgh in the domain), zip, phone or
+  street, unless it's the chain's own domain or the domain spells the name; researched links skip it. `pipeline/private_dining.py`
+  (ca-eats copy, identical) `entity_fix()` gives the trade name, plus a PA guard for leading "Dba" and names still a holder after the
+  tail goes (house number, Investors, Group, Assoc...); bare holders are dropped unless hand-checked or honored.
+  `LinkAndNameTests.swift` guards all three in the bundle.
+- Bib Gourmand filter (2026-10-21, `../BIB-GOURMAND-FILTER.md`, from New York): `Filters.bibGourmand` (`mi == 2`), the "MICHELIN Guide"
+  section after Hide chains with its count, `bib=1` in the web app; `BibGourmandFilterTests` + `SmokeUITests.testBibGourmandFilter`,
+  qa-site check "1b". 10 Bib Gourmands in the data.
 
 ## Waiting on Nick's hand-downloaded files (`data/raw/official/manual/`)
 Everything below stays empty or hidden until the WPRDC ACHD CSVs and the PLCB export are there; then rerun from `official.py` down.

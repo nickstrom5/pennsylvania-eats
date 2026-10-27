@@ -41,6 +41,12 @@ struct FiltersSheet: View {
                 } footer: {
                     Text("That means on an official list (a Philadelphia food license or an Allegheny County permit), a high-confidence map listing, or hand-checked by us. Non-restaurants are convenience and grocery counters, members-only clubs, stadium and campus dining and the like.")
                 }
+                // a fact from the MICHELIN Guide, not a rating; shown only when the data has Bib Gourmand places
+                if model.bibCount > 0 {
+                    Section("MICHELIN Guide") {
+                        Toggle("Bib Gourmand (\(model.bibCount.formatted()))", isOn: $model.filters.bibGourmand)
+                    }
+                }
                 if model.filters.activeCount > 0 {
                     Section { Button("Clear all filters", role: .destructive) { model.filters = Filters() } }
                 }
