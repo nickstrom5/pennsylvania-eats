@@ -1,44 +1,44 @@
 {
  "schema": 1,
- "version": "2026-10-19.3",
+ "version": "2026-10-19.4",
  "records_through": "2026-10-19",
- "published": "2026-10-26T20:57:19Z",
+ "published": "2026-11-03T18:00:35Z",
  "min_app_build": 1,
  "files": {
   "index": {
-   "path": "index-33d0e775a0ca.json",
-   "sha256": "33d0e775a0cafacce2ed11a7994dcb30ceef047166116f374ab0fd90d7c5fbd9",
+   "path": "index-b8731edf8eba.json",
+   "sha256": "b8731edf8ebad4659bf9c6bb007170fbadc641b6155bed7234f06b56cca314b2",
    "bytes": 59315,
    "rows": 0
   },
   "places-central": {
-   "path": "places-central-842a8274b349.json",
-   "sha256": "842a8274b34922afaa71806071b432095b2a5c146f334ee0a383b979206164d1",
-   "bytes": 290113,
+   "path": "places-central-57c047e1c4fd.json",
+   "sha256": "57c047e1c4fd47ce76fd9783331d76eca6cdcaa1735c7dd2f8875f44f0f57b0a",
+   "bytes": 290155,
    "rows": 1431
   },
   "places-lehigh-valley": {
-   "path": "places-lehigh-valley-923cc8cb0a08.json",
-   "sha256": "923cc8cb0a08cf99255b7fd6aa057e92b632ed1732aabebc37eea63b7d590ed7",
-   "bytes": 256104,
+   "path": "places-lehigh-valley-0df3ab0bfba8.json",
+   "sha256": "0df3ab0bfba8f57d541c72c99f1b70a114f7bfe7029e14133346030b940426ce",
+   "bytes": 256116,
    "rows": 1257
   },
   "places-northeast-poconos": {
-   "path": "places-northeast-poconos-db5169eef5ae.json",
-   "sha256": "db5169eef5aeb9c2a86880ea878c12ea5051ea68ef1258fee177f5f68a730ca9",
-   "bytes": 423833,
+   "path": "places-northeast-poconos-eb48f80ea490.json",
+   "sha256": "eb48f80ea490d0b329c0b27959177f2d6b1aa50ea37b5447fd6b40c7c67e09a6",
+   "bytes": 423869,
    "rows": 2142
   },
   "places-northern-tier": {
-   "path": "places-northern-tier-e4a3385f2919.json",
-   "sha256": "e4a3385f2919f00fed0e0ffdf26f1141cd25b299b34efeac4e63be3fc5d5a28f",
-   "bytes": 85103,
+   "path": "places-northern-tier-c89b1ed33897.json",
+   "sha256": "c89b1ed33897dbff0d13b75c53e53a8f0295f2f4ae9af5606218bd0e07d2192e",
+   "bytes": 85121,
    "rows": 434
   },
   "places-northwest": {
-   "path": "places-northwest-3886ed259bde.json",
-   "sha256": "3886ed259bde3137add58bfd4d065a70d697cb356bf3154b333d6d35236d8eaa",
-   "bytes": 217439,
+   "path": "places-northwest-77d6463aef5b.json",
+   "sha256": "77d6463aef5b4fe9910789409e79e655f18d78df94b32f5f9b0ead5345659aae",
+   "bytes": 217451,
    "rows": 1077
   },
   "places-philadelphia": {
@@ -48,32 +48,32 @@
    "rows": 5345
   },
   "places-philly-suburbs": {
-   "path": "places-philly-suburbs-6c5433d26e0e.json",
-   "sha256": "6c5433d26e0e5fee37e4ae2414ec5d8e7a63a483c3aae911ca57bc4d2e8a40ae",
-   "bytes": 897916,
+   "path": "places-philly-suburbs-6e58ec7708c1.json",
+   "sha256": "6e58ec7708c144f98d03cc23f5b57ac5f0ce4b21048c5500d77b63a7bfdd7827",
+   "bytes": 897922,
    "rows": 4330
   },
   "places-pittsburgh-region": {
-   "path": "places-pittsburgh-region-ed2addab07b3.json",
-   "sha256": "ed2addab07b3f13a732e1fe0c1a03449f4b17e1c5cf566b63fe8ec68f6ef5dd8",
-   "bytes": 926724,
+   "path": "places-pittsburgh-region-a33d7e21867a.json",
+   "sha256": "a33d7e21867a6df1a78a22ef0db1839c40bbc9e3ec5a39c57136507a615c53c8",
+   "bytes": 926856,
    "rows": 4547
   },
   "places-south-central": {
-   "path": "places-south-central-876584478cf0.json",
-   "sha256": "876584478cf0ab26d63dae039cf9b4ff4e10864f2f4840a0df7fcff316264d72",
-   "bytes": 743404,
+   "path": "places-south-central-4a186da0ca31.json",
+   "sha256": "4a186da0ca3136581af90690f401731678fe523965322a0bd077da40f68851e3",
+   "bytes": 743446,
    "rows": 3569
   }
  },
  "counts": {
   "places": 24132,
   "files": 10,
-  "bytes": 4940175,
-  "restaurants": 23412
+  "bytes": 4940475,
+  "restaurants": 23362
  },
  "previous": {
-  "version": "2026-10-19.2",
+  "version": "2026-10-19.3",
   "files": {
    "index": "index-33d0e775a0ca.json",
    "places-central": "places-central-842a8274b349.json",
@@ -81,7 +81,7 @@
    "places-northeast-poconos": "places-northeast-poconos-db5169eef5ae.json",
    "places-northern-tier": "places-northern-tier-e4a3385f2919.json",
    "places-northwest": "places-northwest-3886ed259bde.json",
-   "places-philadelphia": "places-philadelphia-c9db76d0ba54.json",
+   "places-philadelphia": "places-philadelphia-75c03fae26e5.json",
    "places-philly-suburbs": "places-philly-suburbs-6c5433d26e0e.json",
    "places-pittsburgh-region": "places-pittsburgh-region-ed2addab07b3.json",
    "places-south-central": "places-south-central-876584478cf0.json"

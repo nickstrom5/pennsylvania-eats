@@ -184,6 +184,8 @@ final class PennsylvaniaEatsTests: XCTestCase {
         XCTAssertTrue(m.places.contains { $0.name == "Oyster House" && $0.city == "Philadelphia" && $0.handChecked })
         XCTAssertFalse(m.places.contains { $0.name.range(of: #"gentlem[ae]n'?s club|strip club|exotic dancer"#, options: [.regularExpression, .caseInsensitive]) != nil },
                        "adult clubs aren't restaurants")
+        XCTAssertFalse(m.places.contains { !$0.isVenue && $0.name.range(of: #"^(?:the )?(?:meltdown|burger den)$|banda burrito|tenderfix|pardon my cheesesteak|neighborhood wings"#, options: [.regularExpression, .caseInsensitive]) != nil },
+                       "delivery-only brands cooked in another restaurant's kitchen (Denny's, Applebee's) stay hidden (QA 2026-10-29)")
         XCTAssertFalse(m.places.contains { ($0.website?.absoluteString ?? "").range(
             of: #"yelp\.com|business\.site|google\.com|groupon\.com|yellowpages\.com"#, options: .regularExpression) != nil },
                        "directory links were checked out")

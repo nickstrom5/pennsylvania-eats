@@ -836,6 +836,8 @@ STORE = re.compile(r"^(?:SUNOCO|MOBIL|SHELL|GULF|CITGO|VALERO|BP|EXXON|SPEEDWAY|
                    r"WINE (?:MERCHANTS?|SHOP|STORE|OUTLET)|WINE AND (?:LIQUOR|SPIRITS)|AND SPIRITS$|BEER DISTRIBUTOR|BEVERAGE DISTRIBUTOR|VENDING|COMMISSARY|"
                    r"FOOD PANTRY|MEAT MARKET|BUTCHER|MINI ?MART|MINI MARKET|CONVENIENCE|SMOKE SHOP|GROCERY|SUPERMARKET|FOOD MARKET|GHOST KITCHEN|"
                    r"VIRTUAL KITCHEN|MRBEAST|MR BEAST|ITS JUST WINGS|WOW BAO|GENTLEM[AE]NS CLUB|TRAMPOLINE|INDOOR PLAYGROUND|LINDT|"
+                   # delivery-only brands cooked in another restaurant's kitchen (Denny's, Applebee's and others; QA 2026-10-29, P1 #4)
+                   r"^(?:THE )?BURGER DEN$|BANDA BURRITO|^(?:THE )?MELTDOWN$|TENDERFIX|PARDON MY CHEESESTEAK|NEIGHBORHOOD WINGS|"
                    r"ROCKY MOUNTAIN CHOCOLATE|JELLY BELLY|GODIVA)\b")
 # Pennsylvania's convenience chains with made-to-order food counters (Wawa hoagies, Sheetz MTO): flagged on their own so Nick can decide
 COUNTER_BRANDS = ["Wawa", "Sheetz", "GetGo", "Rutter's", "Turkey Hill", "Royal Farms", "7-Eleven"]
@@ -862,7 +864,7 @@ busy = o.reviews.fillna(0) >= 200
 gfirst = o.gcats.fillna("").str.split("|").str[0]
 plainly_food = kd.str.contains(REALFOOD) | o.cat.isin(["bar", "brewery", "coffee_shop", "cafe"]) \
     | gfirst.str.contains(r"\b(?:Bar|Pub|Restaurant|Cafe|Café|Coffee|Tavern|Grill|Brewery|Diner|Bakery)\b", regex=True)
-brand_store = o.brand_n.isin(["Wegmans", "ShopRite", "Whole Foods Market", "Trader Joe's", "Sunoco", "Speedway", "Valero", "Rite Aid"])
+brand_store = o.brand_n.isin(["Wegmans", "ShopRite", "Whole Foods Market", "Trader Joe's", "Sunoco", "Speedway", "Valero", "Rite Aid", "Burger Den", "The Meltdown", "Banda Burrito", "Tenderfix", "Pardon My Cheesesteak"])
 counter = o.brand_n.isin(COUNTER_BRANDS) | o.k.fillna("").str.match(r"^(?:WAWA|SHEETZ|GETGO|RUTTERS|TURKEY HILL|ROYAL FARMS|7 ELEVEN)\b")
 store = kd.str.contains(STORE) | brand_store | (o.dom.isin(STORE_DOMS_ALL) & ~plainly_food) | (kd.str.contains(CANDY) & ~kd.str.contains(REALFOOD) & ~busy)
 venue = kd.str.contains(HARD) | k_.str.contains(HARD) | o.name.fillna("").str.upper().str.contains(r"\(T-?\d|\bGATE [A-Z]?\d", regex=True) \
